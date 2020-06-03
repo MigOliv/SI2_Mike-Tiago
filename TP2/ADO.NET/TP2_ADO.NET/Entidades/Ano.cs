@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Ano
+    public class Ano
     {
         public int AnoLetivo { get; set; }
     }

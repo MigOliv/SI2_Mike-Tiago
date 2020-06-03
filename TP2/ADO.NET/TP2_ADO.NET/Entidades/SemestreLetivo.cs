@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class SemestreLetivo
+    public class SemestreLetivo
     {
         public string sigla { get; set; }
         public int ano { get; set; }
