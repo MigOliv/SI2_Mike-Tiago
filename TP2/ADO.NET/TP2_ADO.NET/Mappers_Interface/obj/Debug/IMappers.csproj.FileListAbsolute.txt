@@ -1,1 +1,3 @@
 C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\IMappers.csprojAssemblyReference.cache
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\IMappers.csprojAssemblyReference.cache
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\IMappers.csproj.CoreCompileInputs.cache

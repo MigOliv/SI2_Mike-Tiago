@@ -61,5 +61,19 @@
     <Compile Include="MapperUnidadeCurricular.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{c40cda89-e708-418e-83e0-dca64dbab4dc}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mappers_Interface\IMappers.csproj">
+      <Project>{cfd3975f-e833-4e7b-9ed5-e78160ed04d7}</Project>
+      <Name>IMappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TP2_ADO.NET\TP2_ADO.NET.csproj">
+      <Project>{57d44fe7-cd57-4a5b-a1f9-3e7d70bc087b}</Project>
+      <Name>TP2_ADO.NET</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mappers_Interface
+namespace IMappers
 {
     public interface IMapperUC_Semestre : IMapper<UC_Semestre, int>
     {
