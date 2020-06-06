@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using Entidades;
 using IMappers;
 
@@ -11,10 +14,42 @@ namespace Mappers
 {
     public class MapperUnidadeCurricular : IMapperUnidadeCurricular
     {
-        public void Create(UnidadeCurricular entity)
+        private string cs;
+
+        public MapperUnidadeCurricular()
         {
-            throw new NotImplementedException();
+            cs = ConfigurationManager.ConnectionStrings["TP1"].ConnectionString;
         }
+
+
+        public void Create(UnidadeCurricular a)
+        {
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "INSERT INTO UnidadeCurricular (sigla,descricao,numCreditos) VALUES(@sigla,@descricao,@numCreditos)";
+                SqlParameter p1 = new SqlParameter("@sigla", a.Sigla);
+                SqlParameter p2 = new SqlParameter("@descricao", a.Descricao);
+                SqlParameter p3 = new SqlParameter("@numCreditos", a.NumCreditos);
+              
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+                cmd.Parameters.Add(p3);
+             
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                ts.Complete();
+            }
+        }
+
 
         public void Delete(UnidadeCurricular entity)
         {
