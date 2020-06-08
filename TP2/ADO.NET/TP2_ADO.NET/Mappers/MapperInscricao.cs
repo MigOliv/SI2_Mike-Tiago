@@ -17,7 +17,7 @@ namespace Mappers
 
         public MapperInscricao()
         {
-            cs = ConfigurationManager.ConnectionStrings["TP1"].ConnectionString;
+            cs = ConfigurationManager.ConnectionStrings["SI2 Database"].ConnectionString;
         }
 
 

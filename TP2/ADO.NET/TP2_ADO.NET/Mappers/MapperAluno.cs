@@ -19,7 +19,7 @@ namespace Mappers
 
         public MapperAluno()
         {
-            cs = ConfigurationManager.ConnectionStrings["TP1"].ConnectionString;
+            cs = ConfigurationManager.ConnectionStrings["SI2 Database"].ConnectionString;
         }
 
 
@@ -53,17 +53,54 @@ namespace Mappers
         }
 
 
-        public void Delete(Aluno entity)
+        public void Delete(Aluno a)
         {
             throw new NotImplementedException();
         }
 
         public Aluno Read(int id)
         {
-            throw new NotImplementedException();
+            Aluno a = new Aluno();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @cc = cc, @nome = nome, @rua = rua, @n = n, @andar = andar, @codPostal = codPostal, @dataNascimento = dataNascimento" +
+                    " FROM Aluno where id = @num";
+                SqlParameter p1 = new SqlParameter("@cc", System.Data.SqlDbType.Int);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@nome", System.Data.SqlDbType.VarChar, 255);
+                p2.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p3 = new SqlParameter("@rua", System.Data.SqlDbType.VarChar, 255);
+                p3.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p4 = new SqlParameter("@n", System.Data.SqlDbType.VarChar, 10);
+                p4.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p5 = new SqlParameter("@andar", System.Data.SqlDbType.VarChar, 10);
+                p5.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p6 = new SqlParameter("@codPostal", System.Data.SqlDbType.Char, 8);
+                p6.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p7 = new SqlParameter("@dataNascimento", System.Data.SqlDbType.Date);
+                p7.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p8 = new SqlParameter("@num", id);
+                cmd.Parameters.Add(p8);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe Aluno com o numero " + id);
+
+                a.Num = id;
+                a.Cc = (int)p1.Value;
+                a.Nome = (string)p2.Value;
+                a.Rua = (string)p3.Value;
+                a.NumeroRua = (string)p4.Value;
+                a.Andar = (string)p5.Value;
+                a.CodigoPostal = (string)p6.Value;
+                a.DataNascimento = (DateTime)p7.Value;
+
+                ts.Complete();
+            }
+            return a;
         }
 
-        public void Update(Aluno entity)
+        public void Update(Aluno a)
         {
             throw new NotImplementedException();
         }

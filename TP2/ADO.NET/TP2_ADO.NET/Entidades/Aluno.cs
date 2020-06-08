@@ -12,7 +12,7 @@ namespace Entidades
         public int Cc { get; set; }
         public string Nome { get; set; }
         public string Rua { get; set; }
-        public int NumeroRua { get; set; }
+        public string NumeroRua { get; set; }
         public string Andar { get; set; }
         public string CodigoPostal { get; set; }
         public DateTime DataNascimento { get; set; }

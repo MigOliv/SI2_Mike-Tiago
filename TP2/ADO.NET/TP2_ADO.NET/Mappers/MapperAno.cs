@@ -17,7 +17,7 @@ namespace Mappers
 
         public MapperAno()
         {
-            cs = ConfigurationManager.ConnectionStrings["TP1"].ConnectionString;
+            cs = ConfigurationManager.ConnectionStrings["SI2 Database"].ConnectionString;
         }
 
         public void Create(Ano a)
