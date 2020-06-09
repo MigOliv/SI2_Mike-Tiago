@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IMappers
 {
-    public interface IMapperRegenteUC : IMapper<RegenteUC, int>
+    public interface IMapperRegenteUC : IMapper<RegenteUC, KeyValuePair<string, int>>
     {
 
     }

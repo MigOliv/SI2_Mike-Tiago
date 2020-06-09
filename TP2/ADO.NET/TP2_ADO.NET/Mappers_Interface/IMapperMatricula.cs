@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IMappers
 {
-    public interface IMapperMatricula : IMapper<Matricula, int>
+    public interface IMapperMatricula : IMapper<Matricula, KeyValuePair<int,int>>
     {
 
     }

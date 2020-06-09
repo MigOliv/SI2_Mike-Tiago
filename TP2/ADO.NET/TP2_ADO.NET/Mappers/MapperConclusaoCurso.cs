@@ -57,7 +57,8 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public ConclusaoCurso Read(int numAluno, String siglaCurso)
+
+        public ConclusaoCurso Read(KeyValuePair<int, string> id)
         {
             ConclusaoCurso conclusao = new ConclusaoCurso();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
@@ -68,18 +69,18 @@ namespace Mappers
                 p1.Direction = System.Data.ParameterDirection.Output;
                 SqlParameter p2 = new SqlParameter("@ano", System.Data.SqlDbType.Int);
                 p2.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p3 = new SqlParameter("@numAluno", numAluno);
+                SqlParameter p3 = new SqlParameter("@numAluno", id.Key);
                 cmd.Parameters.Add(p3);
-                SqlParameter p4 = new SqlParameter("@siglaCurso", siglaCurso);
+                SqlParameter p4 = new SqlParameter("@siglaCurso", id.Value);
                 cmd.Parameters.Add(p4);
                 cmd.ExecuteNonQuery();
                 if (p1.Value is System.DBNull)
-                    throw new Exception("Não existe ConclusaoCurso com a combinacao numAluno/siglaCurso: " + numAluno + "/" + siglaCurso);
+                    throw new Exception("Não existe ConclusaoCurso com a combinacao numAluno/siglaCurso: " + id.Key + "/" + id.Value);
 
                 conclusao.notaFinal = (float)p1.Value;
                 conclusao.ano = (int)p2.Value;
-                conclusao.numAluno = numAluno;
-                conclusao.siglaCurso = siglaCurso;
+                conclusao.numAluno = id.Key;
+                conclusao.siglaCurso = id.Value;
 
                 ts.Complete();
             }

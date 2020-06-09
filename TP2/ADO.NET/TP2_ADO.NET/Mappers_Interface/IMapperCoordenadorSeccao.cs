@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IMappers
 {
-    public interface IMapperCoordenadorSeccao : IMapper<CoordenadorSeccao, int>
+    public interface IMapperCoordenadorSeccao : IMapper<CoordenadorSeccao, KeyValuePair<string, int>>
     {
 
     }

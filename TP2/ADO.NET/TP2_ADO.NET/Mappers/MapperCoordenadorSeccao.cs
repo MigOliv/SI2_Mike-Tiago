@@ -56,7 +56,8 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public CoordenadorSeccao Read(String siglaSeccao, int ccProf)
+
+        public CoordenadorSeccao Read(KeyValuePair<string, int> id)
         {
             CoordenadorSeccao coordenadorSeccao = new CoordenadorSeccao();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
@@ -65,17 +66,17 @@ namespace Mappers
                 cmd.CommandText = "SELECT @siglaDepartamento = siglaDepartamento FROM CoordenadorSeccao where siglaSeccao = @siglaSeccao AND ccProf = @ccProf";
                 SqlParameter p1 = new SqlParameter("@siglaDepartamento", System.Data.SqlDbType.VarChar, 6);
                 p1.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p2 = new SqlParameter("@siglaSeccao", siglaSeccao);
+                SqlParameter p2 = new SqlParameter("@siglaSeccao", id.Key);
                 cmd.Parameters.Add(p2);
-                SqlParameter p3 = new SqlParameter("@ccProf", ccProf);
+                SqlParameter p3 = new SqlParameter("@ccProf", id.Value);
                 cmd.Parameters.Add(p3);
                 cmd.ExecuteNonQuery();
                 if (p1.Value is System.DBNull)
-                    throw new Exception("Não existe Coordenador de Seccao com a combinacao siglaSeccao/ccProf: " + siglaSeccao + "/" + ccProf);
+                    throw new Exception("Não existe Coordenador de Seccao com a combinacao siglaSeccao/ccProf: " + id.Key + "/" + id.Value);
 
                 coordenadorSeccao.SiglaDepartamento = (string)p1.Value;
-                coordenadorSeccao.SiglaSeccao = siglaSeccao;
-                coordenadorSeccao.CcProfessor = ccProf;
+                coordenadorSeccao.SiglaSeccao = id.Key;
+                coordenadorSeccao.CcProfessor = id.Value;
 
                 ts.Complete();
             }

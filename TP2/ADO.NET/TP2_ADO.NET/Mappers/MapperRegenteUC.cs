@@ -55,7 +55,8 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public RegenteUC Read(String siglaUC, int ano)
+      
+        public RegenteUC Read(KeyValuePair<string, int> id)
         {
             RegenteUC regente = new RegenteUC();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
@@ -64,17 +65,17 @@ namespace Mappers
                 cmd.CommandText = "SELECT @ccProfessor = ccProfessor FROM RegenteUC where siglaUC = @siglaUC AND ano = @ano";
                 SqlParameter p1 = new SqlParameter("@ccProfessor", System.Data.SqlDbType.Int);
                 p1.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p2 = new SqlParameter("@siglaUC", siglaUC);
+                SqlParameter p2 = new SqlParameter("@siglaUC", id.Key);
                 cmd.Parameters.Add(p2);
-                SqlParameter p3 = new SqlParameter("@ano", ano);
+                SqlParameter p3 = new SqlParameter("@ano", id.Value);
                 cmd.Parameters.Add(p3);
                 cmd.ExecuteNonQuery();
                 if (p1.Value is System.DBNull)
-                    throw new Exception("Não existe RegenteUC com a combinacao siglaUC/ano: " + siglaUC + "/" + ano);
+                    throw new Exception("Não existe RegenteUC com a combinacao siglaUC/ano: " + id.Key + "/" + id.Value);
 
                 regente.ccProfessor = (int)p1.Value;
-                regente.siglaUC = siglaUC;
-                regente.ano = ano;
+                regente.siglaUC = id.Key;
+                regente.ano = id.Value;
 
                 ts.Complete();
             }

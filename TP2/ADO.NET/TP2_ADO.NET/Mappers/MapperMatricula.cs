@@ -56,7 +56,8 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Matricula Read(int numAluno, int ano)
+
+        public Matricula Read(KeyValuePair<int, int> id)
         {
             Matricula matricula = new Matricula();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
@@ -65,17 +66,17 @@ namespace Mappers
                 cmd.CommandText = "SELECT @siglaCurso = siglaCurso FROM Matricula where numAluno = @numAluno AND ano = @ano";
                 SqlParameter p1 = new SqlParameter("@siglaCurso", System.Data.SqlDbType.VarChar, 6);
                 p1.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p2 = new SqlParameter("@numAluno", numAluno);
+                SqlParameter p2 = new SqlParameter("@numAluno", id.Key);
                 cmd.Parameters.Add(p2);
-                SqlParameter p3 = new SqlParameter("@ano", ano);
+                SqlParameter p3 = new SqlParameter("@ano", id.Value);
                 cmd.Parameters.Add(p3);
                 cmd.ExecuteNonQuery();
                 if (p1.Value is System.DBNull)
-                    throw new Exception("Não existe Matricula com a combinacao numAluno/ano: " + numAluno + "/" + ano);
+                    throw new Exception("Não existe Matricula com a combinacao numAluno/ano: " + id.Key + "/" + id.Value);
 
                 matricula.siglaCurso = (string)p1.Value;
-                matricula.numAluno = numAluno;
-                matricula.ano = ano;
+                matricula.numAluno = id.Key;
+                matricula.ano = id.Value;
 
                 ts.Complete();
             }

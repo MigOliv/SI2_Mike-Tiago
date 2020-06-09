@@ -55,27 +55,28 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Seccao Read(String sigla)
+
+        public Seccao Read(KeyValuePair<string, string> id)
         {
             Seccao seccao = new Seccao();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "SELECT @siglaDepartamento = siglaDepartamento, @descricao = descricao FROM Seccao WHERE sigla = @sigla";
-                SqlParameter p1 = new SqlParameter("@siglaDepartamento", System.Data.SqlDbType.Char);
+                cmd.CommandText = "SELECT @descricao = descricao FROM Seccao WHERE siglaDepartamento = @siglaDepartamento AND sigla = @sigla";
+                SqlParameter p1 = new SqlParameter("@descr", System.Data.SqlDbType.VarChar, 255);
                 p1.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p2 = new SqlParameter("@descr", System.Data.SqlDbType.VarChar, 255);
-                p2.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p3 = new SqlParameter("@sigla", sigla);
+                SqlParameter p3 = new SqlParameter("@siglaDepartamento", id.Key);
                 cmd.Parameters.Add(p3);
-              
+                SqlParameter p4 = new SqlParameter("@sigla", id.Value);
+                cmd.Parameters.Add(p4);
+
                 cmd.ExecuteNonQuery();
                 if (p1.Value is System.DBNull)
-                    throw new Exception("Não existe Seccao com a combinação siglaDepartamento/sigla " + siglaDepartamento +" "+sigla);
+                    throw new Exception("Não existe Seccao com a combinação siglaDepartamento/sigla " + id.Key + " " + id.Key);
 
-                seccao.Sigla = sigla;
-                seccao.SiglaDepartamento = (string)p1.Value;
-                seccao.Descricao = (string)p2.Value;
+                seccao.Sigla = id.Key;
+                seccao.SiglaDepartamento = id.Value;
+                seccao.Descricao = (string)p1.Value;
 
                 ts.Complete();
             }
