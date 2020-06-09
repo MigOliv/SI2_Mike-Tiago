@@ -50,9 +50,24 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Ano Read(int id)
+        public Ano Read(int anoLetivo)
         {
-            throw new NotImplementedException();
+            Ano ano = new Ano();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT * FROM Ano WHERE anoLetivo = @anoLetivo";
+               
+                SqlParameter p1 = new SqlParameter("@anoLetivo", anoLetivo);
+                cmd.Parameters.Add(p1);
+                cmd.ExecuteNonQuery();
+              
+                ano.AnoLetivo = anoLetivo;
+               
+                ts.Complete();
+            }
+
+            return ano;
         }
 
         public void Update(Ano entity)

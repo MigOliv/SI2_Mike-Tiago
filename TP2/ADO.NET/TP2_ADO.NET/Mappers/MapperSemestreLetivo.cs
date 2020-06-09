@@ -55,9 +55,31 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public SemestreLetivo Read(int id)
+        public SemestreLetivo Read(String sigla, int ano)
         {
-            throw new NotImplementedException();
+            SemestreLetivo semLetivo = new SemestreLetivo();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @descricao = descricao FROM SemestreLetivo where sigla = @sigla AND ano = @ano";
+                SqlParameter p1 = new SqlParameter("@descricao", System.Data.SqlDbType.VarChar, 6);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@sigla", sigla);
+                cmd.Parameters.Add(p2);
+                SqlParameter p3 = new SqlParameter("@ano", ano);
+                cmd.Parameters.Add(p3);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe SemestreLetivo com a combinacao sigla/ano: " + sigla + "/" + ano);
+
+                semLetivo.descricao = (string)p1.Value;
+                semLetivo.sigla = sigla;
+                semLetivo.ano = ano;
+
+                ts.Complete();
+            }
+
+            return semLetivo;
         }
 
         public void Update(SemestreLetivo entity)

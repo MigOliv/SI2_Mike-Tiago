@@ -55,9 +55,31 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public RegenteUC Read(int id)
+        public RegenteUC Read(String siglaUC, int ano)
         {
-            throw new NotImplementedException();
+            RegenteUC regente = new RegenteUC();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @ccProfessor = ccProfessor FROM RegenteUC where siglaUC = @siglaUC AND ano = @ano";
+                SqlParameter p1 = new SqlParameter("@ccProfessor", System.Data.SqlDbType.Int);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@siglaUC", siglaUC);
+                cmd.Parameters.Add(p2);
+                SqlParameter p3 = new SqlParameter("@ano", ano);
+                cmd.Parameters.Add(p3);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe RegenteUC com a combinacao siglaUC/ano: " + siglaUC + "/" + ano);
+
+                regente.ccProfessor = (int)p1.Value;
+                regente.siglaUC = siglaUC;
+                regente.ano = ano;
+
+                ts.Complete();
+            }
+
+            return regente;
         }
 
         public void Update(RegenteUC entity)

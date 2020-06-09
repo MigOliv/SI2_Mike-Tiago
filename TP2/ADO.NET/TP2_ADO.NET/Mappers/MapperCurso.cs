@@ -58,9 +58,34 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Curso Read(int id)
+        public Curso Read(String sigla)
         {
-            throw new NotImplementedException();
+            Curso curso = new Curso();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @descricao = descricao, @siglaDepartamento = siglaDepartamento, @totalCreditos = totalCreditos FROM Curso where sigla = @sigla";
+                SqlParameter p1 = new SqlParameter("@descr", System.Data.SqlDbType.VarChar, 255);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@siglaDepartamento", System.Data.SqlDbType.VarChar,255);
+                p2.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p3 = new SqlParameter("@totalCreditos", System.Data.SqlDbType.Float);
+                p3.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p4 = new SqlParameter("@sigla", sigla);
+                cmd.Parameters.Add(p4);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe Curso com a sigla " + sigla);
+
+                curso.Sigla = sigla;
+                curso.Descricao = (string)p1.Value;
+                curso.SiglaDepartamento = (string)p2.Value;
+                curso.TotalCreditos = (int)p3.Value;
+
+                ts.Complete();
+            }
+
+            return curso;
         }
 
         public void Update(Curso entity)

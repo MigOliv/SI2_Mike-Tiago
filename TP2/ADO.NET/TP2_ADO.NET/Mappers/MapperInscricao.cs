@@ -61,9 +61,40 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Inscricao Read(int id)
+        public Inscricao Read(int numAluno, String siglaCurso, String siglaSemestreLetivo, int ano, String siglaUC)
         {
-            throw new NotImplementedException();
+            Inscricao inscricao = new Inscricao();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @nota = nota FROM Inscricao where numAluno = @numAluno AND siglaCurso = @siglaCurso AND siglaSemestreLetivo = @siglaSemestreLetivo AND ano = @ano AND siglaUC = @siglaUC";
+                SqlParameter p1 = new SqlParameter("@nota", System.Data.SqlDbType.Float);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@numAluno", numAluno);
+                cmd.Parameters.Add(p2);
+                SqlParameter p3 = new SqlParameter("@siglaCurso", siglaCurso);
+                cmd.Parameters.Add(p3);
+                SqlParameter p4 = new SqlParameter("@siglaSemestreLetivo", siglaSemestreLetivo);
+                cmd.Parameters.Add(p4);
+                SqlParameter p5 = new SqlParameter("@ano", ano);
+                cmd.Parameters.Add(p5);
+                SqlParameter p6 = new SqlParameter("@siglaUC", siglaUC);
+                cmd.Parameters.Add(p6);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe Inscricao com a chave fornecida: " + numAluno + "/" + siglaCurso + "/" + siglaSemestreLetivo +"/"+ano+"/"+siglaUC);
+
+                inscricao.nota = (float)p1.Value;
+                inscricao.numAluno = numAluno;
+                inscricao.siglaCurso = siglaCurso;
+                inscricao.siglaSemestreLetivo = siglaSemestreLetivo;
+                inscricao.ano = ano;
+                inscricao.siglaUC = siglaUC;
+
+                ts.Complete();
+            }
+
+            return inscricao;
         }
 
         public void Update(Inscricao entity)

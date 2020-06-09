@@ -44,12 +44,9 @@ namespace Mappers
 
                 using (var cn = new SqlConnection(cs))
                 {
-
                     cmd.Connection = cn;
                     cn.Open();
-
                     cmd.ExecuteNonQuery();
-
                 }
                 ts.Complete();
             }
@@ -61,9 +58,40 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Professor Read(int id)
+        public Professor Read(int cc)
         {
-            throw new NotImplementedException();
+            Professor prof = new Professor();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @nome = nome, @areaEspecializacao = areaEspecializacao, @categoria = categoria, @siglaDepartamento = siglaDepartamento, @siglaSeccao = siglaSeccao FROM Professor where cc = @cc";
+                SqlParameter p1 = new SqlParameter("@nome", System.Data.SqlDbType.VarChar, 255);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@areaEspecializacao", System.Data.SqlDbType.VarChar, 255);
+                p2.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p3 = new SqlParameter("@categoria", System.Data.SqlDbType.Float);
+                p3.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p4 = new SqlParameter("@siglaDepartamento", System.Data.SqlDbType.VarChar, 6);
+                p3.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p5 = new SqlParameter("@siglaSeccao", System.Data.SqlDbType.VarChar, 6);
+                p3.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p6 = new SqlParameter("@cc", cc);
+                cmd.Parameters.Add(p6);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe Professor com o cc " + cc);
+
+                prof.Cc = cc;
+                prof.Nome = (string)p1.Value;
+                prof.AreaEspecializacao = (string)p2.Value;
+                prof.Categoria = (string)p3.Value;
+                prof.SiglaDepartamento = (string)p3.Value;
+                prof.SiglaSeccao = (string)p3.Value;
+
+                ts.Complete();
+            }
+
+            return prof;
         }
 
         public void Update(Professor entity)

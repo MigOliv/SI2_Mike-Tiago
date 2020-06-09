@@ -54,9 +54,28 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Departamento Read(int id)
+        public Departamento Read(String sigla)
         {
-            throw new NotImplementedException();
+            Departamento dep = new Departamento();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @descricao = descricao FROM Departament where sigla = @sigla";
+                SqlParameter p1 = new SqlParameter("@descr", System.Data.SqlDbType.VarChar, 255);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@sigla", sigla);
+                cmd.Parameters.Add(p2);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe Departamento com a sigla " + sigla);
+
+                dep.Sigla = sigla;
+                dep.Descricao = (string)p1.Value;
+              
+                ts.Complete();
+            }
+
+            return dep;
         }
 
         public void Update(Departamento entity)

@@ -56,9 +56,31 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public CoordenadorSeccao Read(int id)
+        public CoordenadorSeccao Read(String siglaSeccao, int ccProf)
         {
-            throw new NotImplementedException();
+            CoordenadorSeccao coordenadorSeccao = new CoordenadorSeccao();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @siglaDepartamento = siglaDepartamento FROM CoordenadorSeccao where siglaSeccao = @siglaSeccao AND ccProf = @ccProf";
+                SqlParameter p1 = new SqlParameter("@siglaDepartamento", System.Data.SqlDbType.VarChar, 6);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@siglaSeccao", siglaSeccao);
+                cmd.Parameters.Add(p2);
+                SqlParameter p3 = new SqlParameter("@ccProf", ccProf);
+                cmd.Parameters.Add(p3);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe Coordenador de Seccao com a combinacao siglaSeccao/ccProf: " + siglaSeccao + "/" + ccProf);
+
+                coordenadorSeccao.SiglaDepartamento = (string)p1.Value;
+                coordenadorSeccao.SiglaSeccao = siglaSeccao;
+                coordenadorSeccao.CcProfessor = ccProf;
+
+                ts.Complete();
+            }
+
+            return coordenadorSeccao;
         }
 
         public void Update(CoordenadorSeccao entity)

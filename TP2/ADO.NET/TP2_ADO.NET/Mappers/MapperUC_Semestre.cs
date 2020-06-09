@@ -57,9 +57,34 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public UC_Semestre Read(int id)
+        public UC_Semestre Read(String siglaCurso, String siglaUC, int ano)
         {
-            throw new NotImplementedException();
+            UC_Semestre uc_sem = new UC_Semestre();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @numSemestre = numSemestre FROM UC_Semestre where siglaCurso = @siglaCurso AND siglaUC = @siglaUC AND ano = @ano";
+                SqlParameter p1 = new SqlParameter("@numSemestre", System.Data.SqlDbType.Int);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@siglaCurso", siglaCurso);
+                cmd.Parameters.Add(p2);
+                SqlParameter p3 = new SqlParameter("@siglaUC", siglaUC);
+                cmd.Parameters.Add(p3);
+                SqlParameter p4 = new SqlParameter("@ano", ano);
+                cmd.Parameters.Add(p4);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe UC_Semestre com a combinacao siglaCurso/siglaUC/ano: " + siglaCurso + "/" + siglaUC + "/" + ano);
+
+                uc_sem.numSemestre = (int)p1.Value;
+                uc_sem.siglaCurso = siglaCurso;
+                uc_sem.siglaUC = siglaUC;
+                uc_sem.ano = ano;
+
+                ts.Complete();
+            }
+
+            return uc_sem;
         }
 
         public void Update(UC_Semestre entity)

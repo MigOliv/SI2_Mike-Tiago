@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -57,9 +57,34 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public ConclusaoCurso Read(int id)
+        public ConclusaoCurso Read(int numAluno, String siglaCurso)
         {
-            throw new NotImplementedException();
+            ConclusaoCurso conclusao = new ConclusaoCurso();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT @notaFinal = notaFinal, @ano = ano FROM ConclusaoCurso where numAluno = @numAluno AND siglaCurso = @siglaCurso";
+                SqlParameter p1 = new SqlParameter("@notaFinal", System.Data.SqlDbType.Float);
+                p1.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p2 = new SqlParameter("@ano", System.Data.SqlDbType.Int);
+                p2.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p3 = new SqlParameter("@numAluno", numAluno);
+                cmd.Parameters.Add(p3);
+                SqlParameter p4 = new SqlParameter("@siglaCurso", siglaCurso);
+                cmd.Parameters.Add(p4);
+                cmd.ExecuteNonQuery();
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe ConclusaoCurso com a combinacao numAluno/siglaCurso: " + numAluno + "/" + siglaCurso);
+
+                conclusao.notaFinal = (float)p1.Value;
+                conclusao.ano = (int)p2.Value;
+                conclusao.numAluno = numAluno;
+                conclusao.siglaCurso = siglaCurso;
+
+                ts.Complete();
+            }
+
+            return conclusao;
         }
 
         public void Update(ConclusaoCurso entity)
