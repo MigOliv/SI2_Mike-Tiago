@@ -55,26 +55,27 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Seccao Read(String sigla, String siglaDepartamento)
+        public Seccao Read(String sigla)
         {
             Seccao seccao = new Seccao();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "SELECT @descricao = descricao FROM Seccao WHERE sigla = @sigla AND siglaDepartamento = @siglaDepartamento";
-                SqlParameter p1 = new SqlParameter("@descr", System.Data.SqlDbType.VarChar, 255);
+                cmd.CommandText = "SELECT @siglaDepartamento = siglaDepartamento, @descricao = descricao FROM Seccao WHERE sigla = @sigla";
+                SqlParameter p1 = new SqlParameter("@siglaDepartamento", System.Data.SqlDbType.Char);
                 p1.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p2 = new SqlParameter("@sigla", sigla);
-                cmd.Parameters.Add(p2);
-                SqlParameter p3 = new SqlParameter("@siglaDepartamento", siglaDepartamento);
+                SqlParameter p2 = new SqlParameter("@descr", System.Data.SqlDbType.VarChar, 255);
+                p2.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter p3 = new SqlParameter("@sigla", sigla);
                 cmd.Parameters.Add(p3);
+              
                 cmd.ExecuteNonQuery();
                 if (p1.Value is System.DBNull)
                     throw new Exception("Não existe Seccao com a combinação siglaDepartamento/sigla " + siglaDepartamento +" "+sigla);
 
                 seccao.Sigla = sigla;
-                seccao.SiglaDepartamento = siglaDepartamento;
-                seccao.Descricao = (string)p1.Value;
+                seccao.SiglaDepartamento = (string)p1.Value;
+                seccao.Descricao = (string)p2.Value;
 
                 ts.Complete();
             }

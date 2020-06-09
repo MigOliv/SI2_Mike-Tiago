@@ -53,9 +53,31 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public Semestre Read(int id)
+        public Semestre Read(KeyValuePair<int, string> vals)
         {
-            throw new NotImplementedException();
+            Semestre semestre = new Semestre();
+            int numSemestre = vals.Key;
+            string siglaCurso = vals.Value;
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT * FROM Semestre WHERE numSemestre = @numSemestre AND @siglaCurso = siglaCurso";
+                SqlParameter p1 = new SqlParameter("@semestre", numSemestre);
+                cmd.Parameters.Add(p1);
+                SqlParameter p2 = new SqlParameter("@siglaCurso", siglaCurso);
+                cmd.Parameters.Add(p2);
+                cmd.ExecuteNonQuery();
+
+                if (p1.Value is System.DBNull)
+                    throw new Exception("Não existe Semestre com a combinação semestre/siglaCurso " + numSemestre + " " + siglaCurso);
+
+                semestre.NumSemestre = numSemestre;
+                semestre.SiglaCurso = siglaCurso;
+
+                ts.Complete();
+            }
+
+            return semestre;
         }
 
         public void Update(Semestre entity)

@@ -9,6 +9,6 @@ namespace IMappers
 {
     public interface IMapperProfessorUC : IMapper<ProfessorUC, int>
     {
-
+        ProfessorUC Read(int ccProfessor, string siglaUC, int ano);
     }
 }

@@ -55,6 +55,35 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
+        public ProfessorUC Read(int ccProfessor, string siglaUC, int ano)
+        {
+            
+            ProfessorUC professorUC = new ProfessorUC();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT * FROM ProfessorUC WHERE ccProfessor = @ccProfessor AND @siglaUC = siglaUC AND @ano = ano";
+                SqlParameter p1 = new SqlParameter("@ccProfessor", ccProfessor);
+                cmd.Parameters.Add(p1);
+                SqlParameter p2 = new SqlParameter("@siglaUC", siglaUC);
+                cmd.Parameters.Add(p2);
+                SqlParameter p3 = new SqlParameter("@ano", ano);
+                cmd.Parameters.Add(p3);
+                cmd.ExecuteNonQuery();
+
+                if (p1.Value is System.DBNull)
+                    throw new Exception("O Professor com o cc " + ccProfessor + " não está associado á UC " + siglaUC + " no ano " + ano);
+
+                professorUC.ccProfessor = ccProfessor;
+                professorUC.siglaUC = siglaUC;
+                professorUC.ano = ano;
+
+                ts.Complete();
+            }
+
+            return professorUC;
+        }
+
         public ProfessorUC Read(int id)
         {
             throw new NotImplementedException();

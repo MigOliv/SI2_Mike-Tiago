@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IMappers
 {
-    public interface IMapperSemestre : IMapper<Semestre, int>
+    public interface IMapperSemestre : IMapper<Semestre, KeyValuePair<int, string>>
     {
 
     }
