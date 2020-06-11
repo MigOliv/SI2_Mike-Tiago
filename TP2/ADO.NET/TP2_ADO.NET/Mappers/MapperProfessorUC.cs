@@ -57,7 +57,7 @@ namespace Mappers
 
         public ProfessorUC Read(int ccProfessor, string siglaUC, int ano)
         {
-            
+            /*
             ProfessorUC professorUC = new ProfessorUC();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
@@ -82,6 +82,8 @@ namespace Mappers
             }
 
             return professorUC;
+            */
+            throw new NotImplementedException();
         }
 
         public ProfessorUC Read(int id)

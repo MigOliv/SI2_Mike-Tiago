@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IMappers
 {
-    public interface IMapperDepartamento : IMapper<Departamento, int>
+    public interface IMapperDepartamento : IMapper<Departamento, string>
     {
 
     }

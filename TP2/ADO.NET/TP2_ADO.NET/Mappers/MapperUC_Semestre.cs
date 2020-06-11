@@ -59,6 +59,7 @@ namespace Mappers
 
         public UC_Semestre Read(String siglaCurso, String siglaUC, int ano)
         {
+            /*
             UC_Semestre uc_sem = new UC_Semestre();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
@@ -85,6 +86,8 @@ namespace Mappers
             }
 
             return uc_sem;
+            */
+            throw new NotImplementedException();
         }
 
         public void Update(UC_Semestre entity)

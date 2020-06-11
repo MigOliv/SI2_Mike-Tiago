@@ -49,5 +49,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{C40CDA89-E708-418E-83E0-DCA64DBAB4DC}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mappers\Mappers.csproj">
+      <Project>{97f0412a-d55d-410b-999c-1d8bb5035f77}</Project>
+      <Name>Mappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mappers_Interface\IMappers.csproj">
+      <Project>{cfd3975f-e833-4e7b-9ed5-e78160ed04d7}</Project>
+      <Name>IMappers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

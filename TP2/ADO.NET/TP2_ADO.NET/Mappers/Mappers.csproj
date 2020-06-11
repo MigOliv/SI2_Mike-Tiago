@@ -72,10 +72,6 @@
       <Project>{cfd3975f-e833-4e7b-9ed5-e78160ed04d7}</Project>
       <Name>IMappers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TP2_ADO.NET\TP2_ADO.NET.csproj">
-      <Project>{57d44fe7-cd57-4a5b-a1f9-3e7d70bc087b}</Project>
-      <Name>TP2_ADO.NET</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

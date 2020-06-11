@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Entidades;
+using IMappers;
+using Mappers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +13,14 @@ namespace TP2_ADO.NET
     {
         static void Main(string[] args)
         {
+            Departamento dep = new Departamento();
+            dep.Sigla = "TEST";
+            dep.Descricao = "Teste do ADO.NET";
+
+            IMapperDepartamento map = new MapperDepartamento();
+
+            map.Create(dep);
+
         }
     }
 }

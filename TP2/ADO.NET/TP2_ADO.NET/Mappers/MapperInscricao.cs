@@ -63,6 +63,7 @@ namespace Mappers
 
         public Inscricao Read(int numAluno, String siglaCurso, String siglaSemestreLetivo, int ano, String siglaUC)
         {
+            /*
             Inscricao inscricao = new Inscricao();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
@@ -95,6 +96,8 @@ namespace Mappers
             }
 
             return inscricao;
+            */
+            throw new NotImplementedException();
         }
 
         public void Update(Inscricao entity)
