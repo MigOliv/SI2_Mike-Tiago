@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IMappers
+namespace Mappers_Interface
 {
     public interface IMapperConclusaoCurso : IMapper<ConclusaoCurso, KeyValuePair<int,string>>
     {

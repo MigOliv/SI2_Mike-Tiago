@@ -1,2 +1,11 @@
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\obj\Debug\Mappers.csprojAssemblyReference.cache
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\obj\Debug\Mappers.csproj.CoreCompileInputs.cache
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\bin\Debug\Mappers.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\bin\Debug\Mappers.pdb
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\bin\Debug\Entidades.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\bin\Debug\Mappers_Interface.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\bin\Debug\Entidades.pdb
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\bin\Debug\Mappers_Interface.pdb
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\obj\Debug\Mappers.csproj.CopyComplete
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\obj\Debug\Mappers.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers\obj\Debug\Mappers.pdb

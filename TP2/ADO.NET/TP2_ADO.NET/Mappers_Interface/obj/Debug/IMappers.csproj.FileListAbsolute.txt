@@ -1,3 +1,10 @@
 C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\IMappers.csprojAssemblyReference.cache
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\IMappers.csprojAssemblyReference.cache
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\IMappers.csproj.CoreCompileInputs.cache
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Mappers_Interface.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Mappers_Interface.pdb
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Entidades.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Entidades.pdb
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\IMappers.csproj.CopyComplete
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.pdb

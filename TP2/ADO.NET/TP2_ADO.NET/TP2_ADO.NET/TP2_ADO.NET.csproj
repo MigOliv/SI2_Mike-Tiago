@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,9 +61,9 @@
       <Project>{97f0412a-d55d-410b-999c-1d8bb5035f77}</Project>
       <Name>Mappers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mappers_Interface\IMappers.csproj">
+    <ProjectReference Include="..\Mappers_Interface\Mappers_Interface.csproj">
       <Project>{cfd3975f-e833-4e7b-9ed5-e78160ed04d7}</Project>
-      <Name>IMappers</Name>
+      <Name>Mappers_Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

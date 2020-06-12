@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2_ADO.NET", "TP2_ADO.NET\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{C40CDA89-E708-418E-83E0-DCA64DBAB4DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMappers", "Mappers_Interface\IMappers.csproj", "{CFD3975F-E833-4E7B-9ED5-E78160ED04D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mappers_Interface", "Mappers_Interface\Mappers_Interface.csproj", "{CFD3975F-E833-4E7B-9ED5-E78160ED04D7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C40CDA89-E708-418E-83E0-DCA64DBAB4DC} = {C40CDA89-E708-418E-83E0-DCA64DBAB4DC}
 	EndProjectSection

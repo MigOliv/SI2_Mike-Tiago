@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace IMappers
+namespace Mappers_Interface
 {
     public interface IMapperAluno : IMapper<Aluno, int>
     {

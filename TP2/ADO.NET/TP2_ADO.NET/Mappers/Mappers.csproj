@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{97F0412A-D55D-410B-999C-1D8BB5035F77}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Mappers</RootNamespace>
     <AssemblyName>Mappers</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -68,9 +71,9 @@
       <Project>{c40cda89-e708-418e-83e0-dca64dbab4dc}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mappers_Interface\IMappers.csproj">
+    <ProjectReference Include="..\Mappers_Interface\Mappers_Interface.csproj">
       <Project>{cfd3975f-e833-4e7b-9ed5-e78160ed04d7}</Project>
-      <Name>IMappers</Name>
+      <Name>Mappers_Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

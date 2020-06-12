@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IMappers
+namespace Mappers_Interface
 {
     public interface IMapperRegenteUC : IMapper<RegenteUC, KeyValuePair<string, int>>
     {

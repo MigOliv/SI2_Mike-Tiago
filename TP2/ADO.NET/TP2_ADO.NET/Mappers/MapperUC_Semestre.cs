@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using Entidades;
-using IMappers;
+using Mappers_Interface;
 
 namespace Mappers
 {
@@ -87,6 +87,11 @@ namespace Mappers
 
             return uc_sem;
             */
+            throw new NotImplementedException();
+        }
+
+        public UC_Semestre Read(int id)
+        {
             throw new NotImplementedException();
         }
 

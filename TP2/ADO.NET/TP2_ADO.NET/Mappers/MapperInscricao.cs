@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using Entidades;
-using IMappers;
+using Mappers_Interface;
 
 namespace Mappers
 {
@@ -97,6 +97,11 @@ namespace Mappers
 
             return inscricao;
             */
+            throw new NotImplementedException();
+        }
+
+        public Inscricao Read(int id)
+        {
             throw new NotImplementedException();
         }
 
