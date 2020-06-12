@@ -49,9 +49,33 @@ namespace Mappers
         }
 
 
-        public void Delete(Departamento entity)
+        public void Delete(Departamento a)
         {
-            throw new NotImplementedException();
+            Departamento dep = new Departamento();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "DELETE FROM Departamento where sigla = @sigla";
+                SqlParameter p1 = new SqlParameter("@sigla", a.Sigla);
+                cmd.Parameters.Add(p1);
+
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                
+
+               //FALTA EXCECAO
+
+
+                ts.Complete();
+            }
+
         }
 
         public Departamento Read(String sigla)
@@ -60,12 +84,22 @@ namespace Mappers
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "SELECT @descricao = descricao FROM Departament where sigla = @sigla";
-                SqlParameter p1 = new SqlParameter("@descr", System.Data.SqlDbType.VarChar, 255);
+                cmd.CommandText = "SELECT @descricao = descricao FROM Departamento where sigla = @sigla";
+                SqlParameter p1 = new SqlParameter("@descricao", System.Data.SqlDbType.VarChar, 255);
                 p1.Direction = System.Data.ParameterDirection.Output;
                 SqlParameter p2 = new SqlParameter("@sigla", sigla);
                 cmd.Parameters.Add(p2);
-                cmd.ExecuteNonQuery();
+
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
                 if (p1.Value is System.DBNull)
                     throw new Exception("Não existe Departamento com a sigla " + sigla);
 

@@ -19,7 +19,10 @@ namespace TP2_ADO.NET
 
             IMapperDepartamento map = new MapperDepartamento();
 
-            map.Create(dep);
+            //map.Create(dep);
+            //map.Read("TEST");
+
+            map.Delete(dep);
 
         }
     }

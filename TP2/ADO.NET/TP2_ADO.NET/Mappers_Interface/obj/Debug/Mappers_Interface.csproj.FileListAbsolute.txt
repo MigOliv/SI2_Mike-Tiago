@@ -7,3 +7,11 @@ C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_I
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.csproj.CopyComplete
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.dll
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.pdb
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Mappers_Interface.dll
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Mappers_Interface.pdb
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Entidades.dll
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\bin\Debug\Entidades.pdb
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.csprojAssemblyReference.cache
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.csproj.CopyComplete
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.dll
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\Mappers_Interface\obj\Debug\Mappers_Interface.pdb
