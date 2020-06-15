@@ -50,9 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ex1.a\f.cs" />
-    <Compile Include="Ex1.a\d.cs" />
-    <Compile Include="Ex1.a\e.cs" />
+    <Compile Include="Ex1.a\K.cs" />
+    <Compile Include="Ex1.a\J.cs" />
+    <Compile Include="Ex1.a\I.cs" />
+    <Compile Include="Ex1.a\G.cs" />
+    <Compile Include="Ex1.a\H.cs" />
+    <Compile Include="Ex1.a\F.cs" />
+    <Compile Include="Ex1.a\D.cs" />
+    <Compile Include="Ex1.a\E.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

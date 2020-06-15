@@ -63,17 +63,14 @@ namespace Mappers
                 SqlCommand cmd = new SqlCommand("remove_Seccao");
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter p1 = new SqlParameter("@new_sigla", entity.Sigla);
+                SqlParameter p1 = new SqlParameter("@sigla", entity.Sigla);
                 p1.Direction = ParameterDirection.Input;
-                SqlParameter p2 = new SqlParameter("@new_siglaDep", entity.SiglaDepartamento);
+                SqlParameter p2 = new SqlParameter("@siglaDepartamento", entity.SiglaDepartamento);
                 p2.Direction = ParameterDirection.Input;
-                SqlParameter p3 = new SqlParameter("@new_descricao", entity.Descricao);
-                p3.Direction = ParameterDirection.Input;
-
+               
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
-                cmd.Parameters.Add(p3);
-
+             
                 using (var cn = new SqlConnection(cs))
                 {
 

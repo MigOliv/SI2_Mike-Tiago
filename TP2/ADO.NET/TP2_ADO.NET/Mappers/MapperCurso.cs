@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,18 +27,19 @@ namespace Mappers
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO Curso (sigla,descricao,siglaDepartamento,totalCreditos) VALUES(@sigla,@descricao,@siglaDepartamento,@totalCreditos)";
-                SqlParameter p1 = new SqlParameter("@sigla", a.Sigla);
-                SqlParameter p2 = new SqlParameter("@descricao", a.Descricao);
-                SqlParameter p3 = new SqlParameter("@siglaDepartamento", a.SiglaDepartamento);
-                SqlParameter p4 = new SqlParameter("@totalCreditos", a.TotalCreditos);
+                SqlCommand cmd = new SqlCommand("estruturaCurso");
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                SqlParameter p1 = new SqlParameter("@siglaDepartamento", a.SiglaDepartamento);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@siglaCurso", a.Sigla);
+                p2.Direction = ParameterDirection.Input;
+                SqlParameter p3 = new SqlParameter("@descricaoCurso", a.Descricao);
+                p3.Direction = ParameterDirection.Input;
 
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
                 cmd.Parameters.Add(p3);
-                cmd.Parameters.Add(p4);
 
                 using (var cn = new SqlConnection(cs))
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,12 +27,17 @@ namespace Mappers
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO UC_Semestre (numSemestre,siglaCurso,siglaUC,ano) VALUES(@numSemestre,@siglaCurso,@siglaUC,@ano)";
+                SqlCommand cmd = new SqlCommand("insert_UC_Curso");
+                cmd.CommandType = CommandType.StoredProcedure;
+
                 SqlParameter p1 = new SqlParameter("@numSemestre", a.numSemestre);
+                p1.Direction = ParameterDirection.Input;
                 SqlParameter p2 = new SqlParameter("@siglaCurso", a.siglaCurso);
+                p2.Direction = ParameterDirection.Input;
                 SqlParameter p3 = new SqlParameter("@siglaUC", a.siglaUC);
+                p3.Direction = ParameterDirection.Input;
                 SqlParameter p4 = new SqlParameter("@ano", a.ano);
+                p4.Direction = ParameterDirection.Input;
 
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
@@ -52,9 +58,36 @@ namespace Mappers
         }
 
 
-        public void Delete(UC_Semestre entity)
+        public void Delete(UC_Semestre a)
         {
-            throw new NotImplementedException();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+                SqlCommand cmd = new SqlCommand("remove_UC_Curso");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@siglaCurso", a.siglaCurso);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@siglaUC", a.siglaUC);
+                p2.Direction = ParameterDirection.Input;
+                SqlParameter p3 = new SqlParameter("@ano", a.ano);
+                p3.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+                cmd.Parameters.Add(p3);
+             
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                ts.Complete();
+            }
         }
 
         public UC_Semestre Read(String siglaCurso, String siglaUC, int ano)

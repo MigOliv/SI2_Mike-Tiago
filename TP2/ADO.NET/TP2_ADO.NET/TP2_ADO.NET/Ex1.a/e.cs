@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TP2_ADO.NET.Ex1.a
 {
-    public class e
+    public class E
     {
         public void insertSeccao(Seccao seccao)
         {

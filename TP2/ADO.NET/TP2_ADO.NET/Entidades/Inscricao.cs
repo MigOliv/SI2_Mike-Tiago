@@ -13,7 +13,7 @@ namespace Entidades
         public string siglaSemestreLetivo { get; set; }
         public int ano { get; set; }
         public string siglaUC { get; set; }
-        public float nota { get; set; }
+        public double nota { get; set; }
 
     }
 }

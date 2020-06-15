@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TP2_ADO.NET.Ex1.a
 {
-    public class f
+    public class F
     {
         public void insertUC(UnidadeCurricular uc)
         {
