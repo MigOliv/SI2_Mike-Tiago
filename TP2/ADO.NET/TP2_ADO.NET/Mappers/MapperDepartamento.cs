@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,10 +27,13 @@ namespace Mappers
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO Departamento (sigla,descricao) VALUES(@sigla,@descricao)";
-                SqlParameter p1 = new SqlParameter("@sigla", a.Sigla);
-                SqlParameter p2 = new SqlParameter("@descricao", a.Descricao);
+                SqlCommand cmd = new SqlCommand("insert_Departamento");
+                cmd.CommandType = CommandType.StoredProcedure;
+                
+                SqlParameter p1 = new SqlParameter("@new_sigla", a.Sigla);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@new_descricao", a.Descricao);
+                p2.Direction = ParameterDirection.Input;
              
 
                 cmd.Parameters.Add(p1);
@@ -51,6 +55,31 @@ namespace Mappers
 
         public void Delete(Departamento a)
         {
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+             
+                SqlCommand cmd = new SqlCommand("remove_Departamento");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@sigla", a.Sigla);
+                p1.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+
+                using (var cn = new SqlConnection(cs))
+                {
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                ts.Complete();
+            }
+            
+
+            /*
             Departamento dep = new Departamento();
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
@@ -75,6 +104,7 @@ namespace Mappers
 
                 ts.Complete();
             }
+            */
 
         }
 
@@ -85,7 +115,7 @@ namespace Mappers
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "SELECT @descricao = descricao FROM Departamento where sigla = @sigla";
-                SqlParameter p1 = new SqlParameter("@descricao", System.Data.SqlDbType.VarChar, 255);
+                SqlParameter p1 = cmd.Parameters.Add("@descricao", SqlDbType.VarChar, 255);
                 p1.Direction = System.Data.ParameterDirection.Output;
                 SqlParameter p2 = new SqlParameter("@sigla", sigla);
                 cmd.Parameters.Add(p2);
@@ -114,7 +144,31 @@ namespace Mappers
 
         public void Update(Departamento entity)
         {
-            throw new NotImplementedException();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+
+                SqlCommand cmd = new SqlCommand("update_Departamento");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@sigla", entity.Sigla);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@new_descricao", entity.Descricao);
+                p1.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+
+                using (var cn = new SqlConnection(cs))
+                {
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                ts.Complete();
+            }
         }
     }
 }
