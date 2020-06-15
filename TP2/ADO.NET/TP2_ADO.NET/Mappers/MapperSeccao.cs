@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,11 +27,15 @@ namespace Mappers
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO Seccao (sigla,siglaDepartamento,descricao) VALUES(@sigla,@siglaDepartamento,@descricao)";
-                SqlParameter p1 = new SqlParameter("@sigla", a.Sigla);
-                SqlParameter p2 = new SqlParameter("@siglaDepartamento", a.SiglaDepartamento);
-                SqlParameter p3 = new SqlParameter("@descricao", a.Descricao);
+                SqlCommand cmd = new SqlCommand("insert_Seccao");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@new_sigla", a.Sigla);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@new_siglaDep", a.SiglaDepartamento);
+                p2.Direction = ParameterDirection.Input;
+                SqlParameter p3 = new SqlParameter("@new_descricao", a.Descricao);
+                p3.Direction = ParameterDirection.Input;
 
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
@@ -52,7 +57,34 @@ namespace Mappers
 
         public void Delete(Seccao entity)
         {
-            throw new NotImplementedException();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+                SqlCommand cmd = new SqlCommand("remove_Seccao");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@new_sigla", entity.Sigla);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@new_siglaDep", entity.SiglaDepartamento);
+                p2.Direction = ParameterDirection.Input;
+                SqlParameter p3 = new SqlParameter("@new_descricao", entity.Descricao);
+                p3.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+                cmd.Parameters.Add(p3);
+
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                ts.Complete();
+            }
         }
 
 
@@ -86,7 +118,34 @@ namespace Mappers
 
         public void Update(Seccao entity)
         {
-            throw new NotImplementedException();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+                SqlCommand cmd = new SqlCommand("update_Seccao");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@sigla2update", entity.Sigla);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@new_siglaDep", entity.SiglaDepartamento);
+                p2.Direction = ParameterDirection.Input;
+                SqlParameter p3 = new SqlParameter("@new_descricao", entity.Descricao);
+                p3.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+                cmd.Parameters.Add(p3);
+
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                ts.Complete();
+            }
         }
     }
 }
