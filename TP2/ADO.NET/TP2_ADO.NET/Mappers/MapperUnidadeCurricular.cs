@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,16 +28,20 @@ namespace Mappers
             using (var ts = new TransactionScope(TransactionScopeOption.Required))
             {
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO UnidadeCurricular (sigla,descricao,numCreditos) VALUES(@sigla,@descricao,@numCreditos)";
-                SqlParameter p1 = new SqlParameter("@sigla", uc.Sigla);
-                SqlParameter p2 = new SqlParameter("@descricao", uc.Descricao);
-                SqlParameter p3 = new SqlParameter("@numCreditos", uc.NumCreditos);
-              
+                SqlCommand cmd = new SqlCommand("insert_UC");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@new_sigla", uc.Sigla);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@new_descricao", uc.Descricao);
+                p2.Direction = ParameterDirection.Input;
+                SqlParameter p3 = new SqlParameter("@nrCreditos", uc.NumCreditos);
+                p3.Direction = ParameterDirection.Input;
+
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
                 cmd.Parameters.Add(p3);
-             
+
                 using (var cn = new SqlConnection(cs))
                 {
 
@@ -52,8 +57,28 @@ namespace Mappers
 
 
         public void Delete(UnidadeCurricular uc)
-        {          
-            throw new NotImplementedException();
+        {
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+                SqlCommand cmd = new SqlCommand("remove_UC");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@sigla", uc.Sigla);
+                p1.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+
+                using (var cn = new SqlConnection(cs))
+                {
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                ts.Complete();
+            }
         }
 
         public UnidadeCurricular Read(string sigla)
@@ -75,7 +100,7 @@ namespace Mappers
                 
                 uc.Sigla = sigla;
                 uc.Descricao = (string)p2.Value;
-                uc.NumCreditos = (float)p3.Value;
+                //uc.NumCreditos = (float)p3.Value;
 
                 ts.Complete();
             }
@@ -85,7 +110,34 @@ namespace Mappers
 
         public void Update(UnidadeCurricular uc)
         {
-            throw new NotImplementedException();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+                SqlCommand cmd = new SqlCommand("update_UC");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter p1 = new SqlParameter("@UC2update", uc.Sigla);
+                p1.Direction = ParameterDirection.Input;
+                SqlParameter p2 = new SqlParameter("@new_descricao", uc.Descricao);
+                p2.Direction = ParameterDirection.Input;
+                SqlParameter p3 = new SqlParameter("@new_numCreditos", uc.NumCreditos);
+                p3.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+                cmd.Parameters.Add(p3);
+
+
+                using (var cn = new SqlConnection(cs))
+                {
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                ts.Complete();
+            }
         }
     }
 }

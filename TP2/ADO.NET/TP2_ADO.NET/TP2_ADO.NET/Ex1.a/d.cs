@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TP2_ADO.NET.Ex1.a
 {
-    class d
+    public class d
     {
         public void insertDepartamento(Departamento dep)
         {

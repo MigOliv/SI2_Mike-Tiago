@@ -154,7 +154,7 @@ namespace Mappers
                 SqlParameter p1 = new SqlParameter("@sigla", entity.Sigla);
                 p1.Direction = ParameterDirection.Input;
                 SqlParameter p2 = new SqlParameter("@new_descricao", entity.Descricao);
-                p1.Direction = ParameterDirection.Input;
+                p2.Direction = ParameterDirection.Input;
 
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);

@@ -10,6 +10,6 @@ namespace Entidades
     {
         public string Sigla { get; set; }
         public string Descricao { get; set; }
-        public float NumCreditos { get; set; }
+        public decimal NumCreditos { get; set; }
     }
 }

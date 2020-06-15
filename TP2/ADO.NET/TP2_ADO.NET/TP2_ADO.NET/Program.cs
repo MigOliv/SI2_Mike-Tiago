@@ -36,6 +36,29 @@ namespace TP2_ADO.NET
 
             //TESTES
 
+            UnidadeCurricular uc = new UnidadeCurricular();
+            uc.Sigla = "TEST";
+            uc.Descricao = "Teste do ADO.NET";
+            uc.NumCreditos = 10;
+
+            UnidadeCurricular test = new UnidadeCurricular();
+            test.Sigla = "TEST";
+            test.Descricao = "Uma nova descricao";
+            test.NumCreditos = 10;
+
+            IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
+
+            //map.Create(uc);
+            //map.Delete(uc);
+
+            map.Update(test);
+
+
+
+
+
+
+            /*
             Departamento dep = new Departamento();
             dep.Sigla = "TEST";
             dep.Descricao = "Teste do ADO.NET";
@@ -45,9 +68,9 @@ namespace TP2_ADO.NET
             test.Descricao = "Uma nova descricao";
 
             IMapperDepartamento map = new MapperDepartamento();
-
+            */
             //map.Create(dep);
-            map.Update(test);
+            //map.Update(test);
             //Departamento test = map.Read("YAAA");
             //map.Delete(test);
             //test.Sigla = "YAAA";
