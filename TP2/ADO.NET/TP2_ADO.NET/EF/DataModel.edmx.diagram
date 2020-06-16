@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe0ced08173f48ec99414ef319f8da08" Name="Diagram1">
+        <EntityTypeShape EntityType="TP1Model.Aluno" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Ano" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.ConclusaoCurso" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Curso" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Departamento" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Inscricao" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Matricula" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Professor" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Professor_UC" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.RegenteUC" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Seccao" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.Semestre" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.SemestreLetivo" Width="1.5" PointX="6" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.UC_Semestre" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TP1Model.UnidadeCurricular" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <AssociationConnector Association="TP1Model.FK__Matricula__numAl__4D7F7902" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Matricula__ano__4F67C174" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Professor_U__ano__4301EA8F" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__RegenteUC__ano__47C69FAC" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__SemestreLet__ano__4AA30C57" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__UC_Semestre__ano__3E3D3572" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Conclusao__sigla__52442E1F" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__ConclusaoCurso__53385258" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Curso__siglaDepa__2B2A60FE" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Inscricao__sigla__5614BF03" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Matricula__sigla__4E739D3B" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Semestre__siglaC__38845C1C" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__UC_Semest__sigla__3C54ED00" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Seccao__siglaDep__284DF453" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Inscricao__58F12BAE" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Inscricao__59E54FE7" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Inscricao__sigla__5708E33C" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Professor__2E06CDA9" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Professor__ccPro__4119A21D" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__RegenteUC__ccPro__45DE573A" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__Professor__sigla__420DC656" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__RegenteUC__sigla__46D27B73" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.FK__UC_Semest__sigla__3D491139" ManuallyRouted="false" />
+        <AssociationConnector Association="TP1Model.CoordenadorSeccao" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
