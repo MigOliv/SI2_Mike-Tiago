@@ -9,6 +9,5 @@ namespace Mappers_Interface
 {
     public interface IMapperMatricula : IMapper<Matricula, KeyValuePair<int,int>>
     {
-
     }
 }

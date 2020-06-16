@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP2_ADO.NET.Ex1.b;
 
 namespace TP2_ADO.NET
 {
@@ -137,7 +138,17 @@ namespace TP2_ADO.NET
             */
 
 
+            /* // ALINEA 1.c
 
+            IMapperAluno map = new MapperAluno();
+            Aluno a = map.Read(39156);
+            map.Delete(a);
+            */
+
+            ListMatriculas lm = new ListMatriculas();
+            Ano anoCurrente = new Ano();
+            anoCurrente.AnoLetivo = 1920;
+            lm.listMatriculas(anoCurrente);
         }
     }
 }

@@ -55,7 +55,26 @@ namespace Mappers
 
         public void Delete(Aluno a)
         {
-            throw new NotImplementedException();
+            using (var ts = new TransactionScope(TransactionScopeOption.Required))
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "DELETE FROM ALUNO WHERE @num = num";
+                SqlParameter p1 = new SqlParameter("@num", a.Num);
+
+                cmd.Parameters.Add(p1);
+
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                ts.Complete();
+            }
         }
 
         public Aluno Read(int id)
@@ -65,24 +84,34 @@ namespace Mappers
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "SELECT @cc = cc, @nome = nome, @rua = rua, @n = n, @andar = andar, @codPostal = codPostal, @dataNascimento = dataNascimento" +
-                    " FROM Aluno where id = @num";
-                SqlParameter p1 = new SqlParameter("@cc", System.Data.SqlDbType.Int);
+                    " FROM Aluno where num = @num";
+                SqlParameter p1 = cmd.Parameters.Add("@cc", System.Data.SqlDbType.Int);
                 p1.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p2 = new SqlParameter("@nome", System.Data.SqlDbType.VarChar, 255);
+                SqlParameter p2 = cmd.Parameters.Add("@nome", System.Data.SqlDbType.VarChar, 255);
                 p2.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p3 = new SqlParameter("@rua", System.Data.SqlDbType.VarChar, 255);
+                SqlParameter p3 = cmd.Parameters.Add("@rua", System.Data.SqlDbType.VarChar, 255);
                 p3.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p4 = new SqlParameter("@n", System.Data.SqlDbType.VarChar, 10);
+                SqlParameter p4 = cmd.Parameters.Add("@n", System.Data.SqlDbType.VarChar, 10);
                 p4.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p5 = new SqlParameter("@andar", System.Data.SqlDbType.VarChar, 10);
+                SqlParameter p5 = cmd.Parameters.Add("@andar", System.Data.SqlDbType.VarChar, 10);
                 p5.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p6 = new SqlParameter("@codPostal", System.Data.SqlDbType.Char, 8);
+                SqlParameter p6 = cmd.Parameters.Add("@codPostal", System.Data.SqlDbType.Char, 8);
                 p6.Direction = System.Data.ParameterDirection.Output;
-                SqlParameter p7 = new SqlParameter("@dataNascimento", System.Data.SqlDbType.Date);
+                SqlParameter p7 = cmd.Parameters.Add("@dataNascimento", System.Data.SqlDbType.Date);
                 p7.Direction = System.Data.ParameterDirection.Output;
                 SqlParameter p8 = new SqlParameter("@num", id);
                 cmd.Parameters.Add(p8);
-                cmd.ExecuteNonQuery();
+
+                using (var cn = new SqlConnection(cs))
+                {
+
+                    cmd.Connection = cn;
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
                 if (p1.Value is System.DBNull)
                     throw new Exception("Não existe Aluno com o numero " + id);
 

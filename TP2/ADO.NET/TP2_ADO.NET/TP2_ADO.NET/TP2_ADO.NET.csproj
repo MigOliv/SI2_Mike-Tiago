@@ -58,6 +58,8 @@
     <Compile Include="Ex1.a\F.cs" />
     <Compile Include="Ex1.a\D.cs" />
     <Compile Include="Ex1.a\E.cs" />
+    <Compile Include="Ex1.b\ListMatriculas.cs" />
+    <Compile Include="Ex1.c\DeleteAluno.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
