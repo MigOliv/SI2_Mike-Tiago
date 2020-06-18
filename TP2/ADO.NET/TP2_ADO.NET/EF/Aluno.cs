@@ -17,7 +17,7 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Aluno()
         {
-            this.Matricula = new HashSet<Matricula>();
+            this.Matriculas = new HashSet<Matricula>();
         }
     
         public int num { get; set; }
@@ -30,6 +30,6 @@ namespace EF
         public Nullable<System.DateTime> dataNascimento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matricula> Matricula { get; set; }
+        public virtual ICollection<Matricula> Matriculas { get; set; }
     }
 }

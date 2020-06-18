@@ -4,13 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D905EE1-41D6-4CBF-A9A7-2C9DE930F25F}</ProjectGuid>
+    <ProjectGuid>{40469665-61C3-44F1-B724-3192745A4145}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>EF</RootNamespace>
     <AssemblyName>EF</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -42,7 +41,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -53,34 +51,99 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.Context.tt</DependentUpon>
+    <Compile Include="Aluno.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel.Designer.cs">
+    <Compile Include="Ano.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConclusaoCurso.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoordenadorSeccao.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditosCurso.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Curso.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Departamento.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Escola.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.edmx</DependentUpon>
+      <DependentUpon>Escola.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Escola.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Escola.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Escola.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Inscricao.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="listUCwithNoInsc_Result.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Matricula.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Professor.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Professor_UC.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegenteUC.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seccao.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Semestre.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SemestreLetivo.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Semestre.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnidadeCurricular.cs">
+      <DependentUpon>Escola.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DataModel.edmx">
+    <EntityDeploy Include="Escola.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Escola.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataModel.edmx.diagram">
-      <DependentUpon>DataModel.edmx</DependentUpon>
+    <None Include="Escola.edmx.diagram">
+      <DependentUpon>Escola.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataModel.Context.tt">
+    <Content Include="Escola.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
+      <LastGenOutput>Escola.Context.cs</LastGenOutput>
+      <DependentUpon>Escola.edmx</DependentUpon>
+    </Content>
+    <Content Include="Escola.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Escola.edmx</DependentUpon>
+      <LastGenOutput>Escola.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

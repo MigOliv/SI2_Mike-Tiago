@@ -20,6 +20,5 @@ namespace EF
         public decimal ano { get; set; }
     
         public virtual Curso Curso { get; set; }
-        public virtual Matricula Matricula { get; set; }
     }
 }

@@ -14,23 +14,12 @@ namespace EF
     
     public partial class Matricula
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Matricula()
-        {
-            this.ConclusaoCurso = new HashSet<ConclusaoCurso>();
-            this.Inscricao = new HashSet<Inscricao>();
-        }
-    
         public int numAluno { get; set; }
         public string siglaCurso { get; set; }
         public decimal ano { get; set; }
     
         public virtual Aluno Aluno { get; set; }
         public virtual Ano Ano1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConclusaoCurso> ConclusaoCurso { get; set; }
         public virtual Curso Curso { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inscricao> Inscricao { get; set; }
     }
 }

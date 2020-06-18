@@ -17,7 +17,7 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SemestreLetivo()
         {
-            this.Inscricao = new HashSet<Inscricao>();
+            this.Inscricaos = new HashSet<Inscricao>();
         }
     
         public string sigla { get; set; }
@@ -26,6 +26,6 @@ namespace EF
     
         public virtual Ano Ano1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inscricao> Inscricao { get; set; }
+        public virtual ICollection<Inscricao> Inscricaos { get; set; }
     }
 }

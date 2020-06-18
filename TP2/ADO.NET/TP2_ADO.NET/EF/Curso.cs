@@ -17,10 +17,10 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Curso()
         {
-            this.ConclusaoCurso = new HashSet<ConclusaoCurso>();
-            this.Inscricao = new HashSet<Inscricao>();
-            this.Matricula = new HashSet<Matricula>();
-            this.Semestre = new HashSet<Semestre>();
+            this.ConclusaoCursoes = new HashSet<ConclusaoCurso>();
+            this.Inscricaos = new HashSet<Inscricao>();
+            this.Matriculas = new HashSet<Matricula>();
+            this.Semestres = new HashSet<Semestre>();
             this.UC_Semestre = new HashSet<UC_Semestre>();
         }
     
@@ -30,14 +30,14 @@ namespace EF
         public Nullable<decimal> totalCreditos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConclusaoCurso> ConclusaoCurso { get; set; }
+        public virtual ICollection<ConclusaoCurso> ConclusaoCursoes { get; set; }
         public virtual Departamento Departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inscricao> Inscricao { get; set; }
+        public virtual ICollection<Inscricao> Inscricaos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matricula> Matricula { get; set; }
+        public virtual ICollection<Matricula> Matriculas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Semestre> Semestre { get; set; }
+        public virtual ICollection<Semestre> Semestres { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UC_Semestre> UC_Semestre { get; set; }
     }

@@ -17,23 +17,23 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ano()
         {
-            this.Matricula = new HashSet<Matricula>();
+            this.Matriculas = new HashSet<Matricula>();
             this.Professor_UC = new HashSet<Professor_UC>();
-            this.RegenteUC = new HashSet<RegenteUC>();
-            this.SemestreLetivo = new HashSet<SemestreLetivo>();
+            this.RegenteUCs = new HashSet<RegenteUC>();
+            this.SemestreLetivoes = new HashSet<SemestreLetivo>();
             this.UC_Semestre = new HashSet<UC_Semestre>();
         }
     
         public decimal ano1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matricula> Matricula { get; set; }
+        public virtual ICollection<Matricula> Matriculas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Professor_UC> Professor_UC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegenteUC> RegenteUC { get; set; }
+        public virtual ICollection<RegenteUC> RegenteUCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SemestreLetivo> SemestreLetivo { get; set; }
+        public virtual ICollection<SemestreLetivo> SemestreLetivoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UC_Semestre> UC_Semestre { get; set; }
     }

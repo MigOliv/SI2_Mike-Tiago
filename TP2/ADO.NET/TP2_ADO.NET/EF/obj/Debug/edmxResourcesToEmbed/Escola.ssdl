@@ -1,0 +1,707 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TP1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aluno">
+    <Key>
+      <PropertyRef Name="num" />
+    </Key>
+    <Property Name="num" Type="int" Nullable="false" />
+    <Property Name="cc" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="rua" Type="varchar" MaxLength="255" />
+    <Property Name="n" Type="varchar" MaxLength="10" />
+    <Property Name="andar" Type="varchar" MaxLength="10" />
+    <Property Name="codPostal" Type="char" MaxLength="8" />
+    <Property Name="dataNascimento" Type="date" />
+  </EntityType>
+  <EntityType Name="Ano">
+    <Key>
+      <PropertyRef Name="ano" />
+    </Key>
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConclusaoCurso">
+    <Key>
+      <PropertyRef Name="numAluno" />
+      <PropertyRef Name="siglaCurso" />
+    </Key>
+    <Property Name="numAluno" Type="int" Nullable="false" />
+    <Property Name="siglaCurso" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="notaFinal" Type="numeric" Precision="3" Scale="1" />
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoordenadorSeccao">
+    <Key>
+      <PropertyRef Name="ccProfessor" />
+    </Key>
+    <Property Name="siglaSeccao" Type="char" MaxLength="6" />
+    <Property Name="ccProfessor" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="siglaDepartamento" Type="char" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="sigla" />
+    </Key>
+    <Property Name="sigla" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="siglaDepartamento" Type="char" MaxLength="6" />
+    <Property Name="totalCreditos" Type="numeric" Precision="3" Scale="0" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="sigla" />
+    </Key>
+    <Property Name="sigla" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="2500" />
+  </EntityType>
+  <EntityType Name="Inscricao">
+    <Key>
+      <PropertyRef Name="numAluno" />
+      <PropertyRef Name="siglaCurso" />
+      <PropertyRef Name="siglaSemestreLetivo" />
+      <PropertyRef Name="ano" />
+      <PropertyRef Name="siglaUC" />
+    </Key>
+    <Property Name="numAluno" Type="int" Nullable="false" />
+    <Property Name="siglaCurso" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="siglaSemestreLetivo" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="siglaUC" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="nota" Type="numeric" Precision="3" Scale="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TP1.dbo.Matricula' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Matricula">
+    <Key>
+      <PropertyRef Name="numAluno" />
+      <PropertyRef Name="siglaCurso" />
+      <PropertyRef Name="ano" />
+    </Key>
+    <Property Name="numAluno" Type="int" Nullable="false" />
+    <Property Name="siglaCurso" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="cc" />
+    </Key>
+    <Property Name="cc" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="areaEspecializacao" Type="varchar" MaxLength="255" />
+    <Property Name="categoria" Type="varchar" MaxLength="255" />
+    <Property Name="siglaDepartamento" Type="char" MaxLength="6" />
+    <Property Name="siglaSeccao" Type="char" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="Professor_UC">
+    <Key>
+      <PropertyRef Name="ccProfessor" />
+      <PropertyRef Name="siglaUC" />
+      <PropertyRef Name="ano" />
+    </Key>
+    <Property Name="ccProfessor" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="siglaUC" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegenteUC">
+    <Key>
+      <PropertyRef Name="siglaUC" />
+      <PropertyRef Name="ano" />
+    </Key>
+    <Property Name="ccProfessor" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="siglaUC" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seccao">
+    <Key>
+      <PropertyRef Name="sigla" />
+      <PropertyRef Name="siglaDepartamento" />
+    </Key>
+    <Property Name="sigla" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="siglaDepartamento" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="2500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TP1.dbo.Semestre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Semestre">
+    <Key>
+      <PropertyRef Name="numSemestre" />
+      <PropertyRef Name="siglaCurso" />
+    </Key>
+    <Property Name="numSemestre" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="siglaCurso" Type="char" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SemestreLetivo">
+    <Key>
+      <PropertyRef Name="sigla" />
+      <PropertyRef Name="ano" />
+    </Key>
+    <Property Name="sigla" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UC_Semestre">
+    <Key>
+      <PropertyRef Name="siglaCurso" />
+      <PropertyRef Name="siglaUC" />
+      <PropertyRef Name="ano" />
+    </Key>
+    <Property Name="numSemestre" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="siglaCurso" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="siglaUC" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ano" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UnidadeCurricular">
+    <Key>
+      <PropertyRef Name="sigla" />
+    </Key>
+    <Property Name="sigla" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="numCreditos" Type="numeric" Precision="3" Scale="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TP1.dbo.CreditosCurso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CreditosCurso">
+    <Key>
+      <PropertyRef Name="siglaCurso" />
+      <PropertyRef Name="siglaUC" />
+    </Key>
+    <Property Name="siglaCurso" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="siglaUC" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="numCreditos" Type="numeric" Precision="3" Scale="1" />
+  </EntityType>
+  <Association Name="FK__Conclusao__sigla__1200572F">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="ConclusaoCurso" Type="Self.ConclusaoCurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="ConclusaoCurso">
+        <PropertyRef Name="siglaCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__ConclusaoCurso__12F47B68' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__ConclusaoCurso__12F47B68" />-->
+  <Association Name="FK__Coordenad__ccPro__7193879D">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="CoordenadorSeccao" Type="Self.CoordenadorSeccao" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="cc" />
+      </Principal>
+      <Dependent Role="CoordenadorSeccao">
+        <PropertyRef Name="ccProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CoordenadorSecca__7287ABD6">
+    <End Role="Seccao" Type="Self.Seccao" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CoordenadorSeccao" Type="Self.CoordenadorSeccao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seccao">
+        <PropertyRef Name="siglaDepartamento" />
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="CoordenadorSeccao">
+        <PropertyRef Name="siglaDepartamento" />
+        <PropertyRef Name="siglaSeccao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Curso__siglaDepa__6BDAAE47">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Curso">
+        <PropertyRef Name="siglaDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Inscricao__18AD54BE" />-->
+  <Association Name="FK__Inscricao__19A178F7">
+    <End Role="SemestreLetivo" Type="Self.SemestreLetivo" Multiplicity="1" />
+    <End Role="Inscricao" Type="Self.Inscricao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SemestreLetivo">
+        <PropertyRef Name="sigla" />
+        <PropertyRef Name="ano" />
+      </Principal>
+      <Dependent Role="Inscricao">
+        <PropertyRef Name="siglaSemestreLetivo" />
+        <PropertyRef Name="ano" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inscricao__sigla__15D0E813">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Inscricao" Type="Self.Inscricao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Inscricao">
+        <PropertyRef Name="siglaCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inscricao__sigla__16C50C4C">
+    <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1" />
+    <End Role="Inscricao" Type="Self.Inscricao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnidadeCurricular">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Inscricao">
+        <PropertyRef Name="siglaUC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Matricula__ano__0F23EA84">
+    <End Role="Ano" Type="Self.Ano" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ano">
+        <PropertyRef Name="ano" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="ano" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Matricula__numAl__0D3BA212">
+    <End Role="Aluno" Type="Self.Aluno" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aluno">
+        <PropertyRef Name="num" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="numAluno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Matricula__sigla__0E2FC64B">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="siglaCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__6EB71AF2">
+    <End Role="Seccao" Type="Self.Seccao" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seccao">
+        <PropertyRef Name="siglaDepartamento" />
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="siglaDepartamento" />
+        <PropertyRef Name="siglaSeccao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__ccPro__00D5CB2D">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Professor_UC" Type="Self.Professor_UC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="cc" />
+      </Principal>
+      <Dependent Role="Professor_UC">
+        <PropertyRef Name="ccProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__sigla__01C9EF66">
+    <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Professor_UC" Type="Self.Professor_UC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnidadeCurricular">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Professor_UC">
+        <PropertyRef Name="siglaUC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor_U__ano__02BE139F">
+    <End Role="Ano" Type="Self.Ano" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Professor_UC" Type="Self.Professor_UC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ano">
+        <PropertyRef Name="ano" />
+      </Principal>
+      <Dependent Role="Professor_UC">
+        <PropertyRef Name="ano" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RegenteUC__ano__0782C8BC">
+    <End Role="Ano" Type="Self.Ano" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RegenteUC" Type="Self.RegenteUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ano">
+        <PropertyRef Name="ano" />
+      </Principal>
+      <Dependent Role="RegenteUC">
+        <PropertyRef Name="ano" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RegenteUC__ccPro__059A804A">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RegenteUC" Type="Self.RegenteUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="cc" />
+      </Principal>
+      <Dependent Role="RegenteUC">
+        <PropertyRef Name="ccProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RegenteUC__sigla__068EA483">
+    <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RegenteUC" Type="Self.RegenteUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnidadeCurricular">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="RegenteUC">
+        <PropertyRef Name="siglaUC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Seccao__siglaDep__68FE419C">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Seccao" Type="Self.Seccao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Seccao">
+        <PropertyRef Name="siglaDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Semestre__siglaC__7840852C">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Semestre" Type="Self.Semestre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="Semestre">
+        <PropertyRef Name="siglaCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SemestreLet__ano__0A5F3567">
+    <End Role="Ano" Type="Self.Ano" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SemestreLetivo" Type="Self.SemestreLetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ano">
+        <PropertyRef Name="ano" />
+      </Principal>
+      <Dependent Role="SemestreLetivo">
+        <PropertyRef Name="ano" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UC_Semest__sigla__7C111610">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UC_Semestre" Type="Self.UC_Semestre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="UC_Semestre">
+        <PropertyRef Name="siglaCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UC_Semest__sigla__7D053A49">
+    <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UC_Semestre" Type="Self.UC_Semestre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnidadeCurricular">
+        <PropertyRef Name="sigla" />
+      </Principal>
+      <Dependent Role="UC_Semestre">
+        <PropertyRef Name="siglaUC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UC_Semestre__ano__7DF95E82">
+    <End Role="Ano" Type="Self.Ano" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UC_Semestre" Type="Self.UC_Semestre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ano">
+        <PropertyRef Name="ano" />
+      </Principal>
+      <Dependent Role="UC_Semestre">
+        <PropertyRef Name="ano" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="alunosMatriculadosMaisTresAnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currentYear" Type="numeric" Mode="In" />
+    <Parameter Name="siglaCurso" Type="char" Mode="In" />
+  </Function>
+  <Function Name="estruturaCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siglaDepartamento" Type="char" Mode="In" />
+    <Parameter Name="siglaCurso" Type="char" Mode="In" />
+    <Parameter Name="descricaoCurso" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getTotalCredits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+    <Parameter Name="siglaCurso" Type="char" Mode="In" />
+  </Function>
+  <Function Name="inscrever_Aluno_UC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numAluno" Type="int" Mode="In" />
+    <Parameter Name="siglaUC" Type="char" Mode="In" />
+    <Parameter Name="ano" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="insert_Aluno_Curso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numAluno" Type="int" Mode="In" />
+    <Parameter Name="siglaCurso" Type="char" Mode="In" />
+    <Parameter Name="ano" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="insert_Departamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="new_sigla" Type="char" Mode="In" />
+    <Parameter Name="new_descricao" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insert_nota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numAluno" Type="int" Mode="In" />
+    <Parameter Name="siglaUC" Type="char" Mode="In" />
+    <Parameter Name="nota" Type="numeric" Mode="In" />
+    <Parameter Name="ano" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="insert_Seccao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="new_sigla" Type="char" Mode="In" />
+    <Parameter Name="new_siglaDep" Type="char" Mode="In" />
+    <Parameter Name="new_descricao" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insert_UC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="new_sigla" Type="char" Mode="In" />
+    <Parameter Name="new_descricao" Type="varchar" Mode="In" />
+    <Parameter Name="nrCreditos" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="insert_UC_Curso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numSemestre" Type="numeric" Mode="In" />
+    <Parameter Name="siglaCurso" Type="char" Mode="In" />
+    <Parameter Name="siglaUC" Type="char" Mode="In" />
+    <Parameter Name="ano" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="listUCwithNoInsc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="anoInicial" Type="numeric" Mode="In" />
+    <Parameter Name="anoFinal" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="remove_Departamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sigla" Type="char" Mode="In" />
+  </Function>
+  <Function Name="remove_Seccao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sigla" Type="char" Mode="In" />
+    <Parameter Name="siglaDepartamento" Type="char" Mode="In" />
+  </Function>
+  <Function Name="remove_UC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sigla" Type="char" Mode="In" />
+  </Function>
+  <Function Name="remove_UC_Curso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siglaCurso" Type="char" Mode="In" />
+    <Parameter Name="siglaUC" Type="char" Mode="In" />
+    <Parameter Name="ano" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="TotalCreditos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+    <Parameter Name="siglaCurso" Type="char" Mode="In" />
+  </Function>
+  <Function Name="update_Departamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sigla" Type="char" Mode="In" />
+    <Parameter Name="new_descricao" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="update_Seccao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sigla2update" Type="char" Mode="In" />
+    <Parameter Name="new_siglaDep" Type="char" Mode="In" />
+    <Parameter Name="new_descricao" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="update_UC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UC2update" Type="char" Mode="In" />
+    <Parameter Name="new_descricao" Type="varchar" Mode="In" />
+    <Parameter Name="new_numCreditos" Type="numeric" Mode="In" />
+  </Function>
+  <EntityContainer Name="TP1ModelStoreContainer">
+    <EntitySet Name="Aluno" EntityType="Self.Aluno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ano" EntityType="Self.Ano" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConclusaoCurso" EntityType="Self.ConclusaoCurso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoordenadorSeccao" EntityType="Self.CoordenadorSeccao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inscricao" EntityType="Self.Inscricao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Professor" EntityType="Self.Professor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Professor_UC" EntityType="Self.Professor_UC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegenteUC" EntityType="Self.RegenteUC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seccao" EntityType="Self.Seccao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SemestreLetivo" EntityType="Self.SemestreLetivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UC_Semestre" EntityType="Self.UC_Semestre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnidadeCurricular" EntityType="Self.UnidadeCurricular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Matricula" EntityType="Self.Matricula" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Matricula].[numAluno] AS [numAluno], 
+    [Matricula].[siglaCurso] AS [siglaCurso], 
+    [Matricula].[ano] AS [ano]
+    FROM [dbo].[Matricula] AS [Matricula]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Semestre" EntityType="Self.Semestre" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Semestre].[numSemestre] AS [numSemestre], 
+    [Semestre].[siglaCurso] AS [siglaCurso]
+    FROM [dbo].[Semestre] AS [Semestre]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CreditosCurso" EntityType="Self.CreditosCurso" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CreditosCurso].[siglaCurso] AS [siglaCurso], 
+    [CreditosCurso].[siglaUC] AS [siglaUC], 
+    [CreditosCurso].[numCreditos] AS [numCreditos]
+    FROM [dbo].[CreditosCurso] AS [CreditosCurso]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Conclusao__sigla__1200572F" Association="Self.FK__Conclusao__sigla__1200572F">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="ConclusaoCurso" EntitySet="ConclusaoCurso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Coordenad__ccPro__7193879D" Association="Self.FK__Coordenad__ccPro__7193879D">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="CoordenadorSeccao" EntitySet="CoordenadorSeccao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CoordenadorSecca__7287ABD6" Association="Self.FK__CoordenadorSecca__7287ABD6">
+      <End Role="Seccao" EntitySet="Seccao" />
+      <End Role="CoordenadorSeccao" EntitySet="CoordenadorSeccao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Curso__siglaDepa__6BDAAE47" Association="Self.FK__Curso__siglaDepa__6BDAAE47">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Curso" EntitySet="Curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inscricao__19A178F7" Association="Self.FK__Inscricao__19A178F7">
+      <End Role="SemestreLetivo" EntitySet="SemestreLetivo" />
+      <End Role="Inscricao" EntitySet="Inscricao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inscricao__sigla__15D0E813" Association="Self.FK__Inscricao__sigla__15D0E813">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Inscricao" EntitySet="Inscricao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inscricao__sigla__16C50C4C" Association="Self.FK__Inscricao__sigla__16C50C4C">
+      <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
+      <End Role="Inscricao" EntitySet="Inscricao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Matricula__ano__0F23EA84" Association="Self.FK__Matricula__ano__0F23EA84">
+      <End Role="Ano" EntitySet="Ano" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Matricula__numAl__0D3BA212" Association="Self.FK__Matricula__numAl__0D3BA212">
+      <End Role="Aluno" EntitySet="Aluno" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Matricula__sigla__0E2FC64B" Association="Self.FK__Matricula__sigla__0E2FC64B">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__6EB71AF2" Association="Self.FK__Professor__6EB71AF2">
+      <End Role="Seccao" EntitySet="Seccao" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__ccPro__00D5CB2D" Association="Self.FK__Professor__ccPro__00D5CB2D">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="Professor_UC" EntitySet="Professor_UC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__sigla__01C9EF66" Association="Self.FK__Professor__sigla__01C9EF66">
+      <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
+      <End Role="Professor_UC" EntitySet="Professor_UC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor_U__ano__02BE139F" Association="Self.FK__Professor_U__ano__02BE139F">
+      <End Role="Ano" EntitySet="Ano" />
+      <End Role="Professor_UC" EntitySet="Professor_UC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RegenteUC__ano__0782C8BC" Association="Self.FK__RegenteUC__ano__0782C8BC">
+      <End Role="Ano" EntitySet="Ano" />
+      <End Role="RegenteUC" EntitySet="RegenteUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RegenteUC__ccPro__059A804A" Association="Self.FK__RegenteUC__ccPro__059A804A">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="RegenteUC" EntitySet="RegenteUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RegenteUC__sigla__068EA483" Association="Self.FK__RegenteUC__sigla__068EA483">
+      <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
+      <End Role="RegenteUC" EntitySet="RegenteUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Seccao__siglaDep__68FE419C" Association="Self.FK__Seccao__siglaDep__68FE419C">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Seccao" EntitySet="Seccao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Semestre__siglaC__7840852C" Association="Self.FK__Semestre__siglaC__7840852C">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Semestre" EntitySet="Semestre" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SemestreLet__ano__0A5F3567" Association="Self.FK__SemestreLet__ano__0A5F3567">
+      <End Role="Ano" EntitySet="Ano" />
+      <End Role="SemestreLetivo" EntitySet="SemestreLetivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UC_Semest__sigla__7C111610" Association="Self.FK__UC_Semest__sigla__7C111610">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="UC_Semestre" EntitySet="UC_Semestre" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UC_Semest__sigla__7D053A49" Association="Self.FK__UC_Semest__sigla__7D053A49">
+      <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
+      <End Role="UC_Semestre" EntitySet="UC_Semestre" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UC_Semestre__ano__7DF95E82" Association="Self.FK__UC_Semestre__ano__7DF95E82">
+      <End Role="Ano" EntitySet="Ano" />
+      <End Role="UC_Semestre" EntitySet="UC_Semestre" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

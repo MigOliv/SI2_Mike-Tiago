@@ -17,16 +17,16 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Departamento()
         {
-            this.Curso = new HashSet<Curso>();
-            this.Seccao = new HashSet<Seccao>();
+            this.Cursoes = new HashSet<Curso>();
+            this.Seccaos = new HashSet<Seccao>();
         }
     
         public string sigla { get; set; }
         public string descricao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Curso> Curso { get; set; }
+        public virtual ICollection<Curso> Cursoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seccao> Seccao { get; set; }
+        public virtual ICollection<Seccao> Seccaos { get; set; }
     }
 }

@@ -17,9 +17,9 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UnidadeCurricular()
         {
-            this.Inscricao = new HashSet<Inscricao>();
+            this.Inscricaos = new HashSet<Inscricao>();
             this.Professor_UC = new HashSet<Professor_UC>();
-            this.RegenteUC = new HashSet<RegenteUC>();
+            this.RegenteUCs = new HashSet<RegenteUC>();
             this.UC_Semestre = new HashSet<UC_Semestre>();
         }
     
@@ -28,11 +28,11 @@ namespace EF
         public Nullable<decimal> numCreditos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inscricao> Inscricao { get; set; }
+        public virtual ICollection<Inscricao> Inscricaos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Professor_UC> Professor_UC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegenteUC> RegenteUC { get; set; }
+        public virtual ICollection<RegenteUC> RegenteUCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UC_Semestre> UC_Semestre { get; set; }
     }

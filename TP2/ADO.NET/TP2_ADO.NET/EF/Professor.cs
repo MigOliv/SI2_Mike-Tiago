@@ -18,8 +18,7 @@ namespace EF
         public Professor()
         {
             this.Professor_UC = new HashSet<Professor_UC>();
-            this.RegenteUC = new HashSet<RegenteUC>();
-            this.Seccao1 = new HashSet<Seccao>();
+            this.RegenteUCs = new HashSet<RegenteUC>();
         }
     
         public decimal cc { get; set; }
@@ -29,12 +28,11 @@ namespace EF
         public string siglaDepartamento { get; set; }
         public string siglaSeccao { get; set; }
     
+        public virtual CoordenadorSeccao CoordenadorSeccao { get; set; }
         public virtual Seccao Seccao { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Professor_UC> Professor_UC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegenteUC> RegenteUC { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seccao> Seccao1 { get; set; }
+        public virtual ICollection<RegenteUC> RegenteUCs { get; set; }
     }
 }

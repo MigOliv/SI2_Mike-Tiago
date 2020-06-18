@@ -1,2 +1,12 @@
-C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csprojAssemblyReference.cache
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EF.exe.config
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EF.exe
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EF.pdb
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.xml
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csproj.CoreCompileInputs.cache
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csproj.CopyComplete
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.exe
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.pdb
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csprojAssemblyReference.cache

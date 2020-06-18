@@ -22,7 +22,6 @@ namespace EF
         public Nullable<decimal> nota { get; set; }
     
         public virtual Curso Curso { get; set; }
-        public virtual Matricula Matricula { get; set; }
         public virtual SemestreLetivo SemestreLetivo { get; set; }
         public virtual UnidadeCurricular UnidadeCurricular { get; set; }
     }

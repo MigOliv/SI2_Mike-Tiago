@@ -10,6 +10,12 @@ namespace EF
     {
         static void Main(string[] args)
         {
+            using (var context = new TP1Entities())
+            {
+                var query = context.Alunoes.Where(s => s.num == 39156).FirstOrDefault<Aluno>();
+
+                Console.WriteLine(query.nome);
+            }
         }
     }
 }

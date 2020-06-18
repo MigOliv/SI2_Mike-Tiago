@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TP1ModelStoreContainer" CdmEntityContainer="TP1Entities">
+    <EntitySetMapping Name="Alunoes">
+      <EntityTypeMapping TypeName="TP1Model.Aluno">
+        <MappingFragment StoreEntitySet="Aluno">
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="cc" ColumnName="cc" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="rua" ColumnName="rua" />
+          <ScalarProperty Name="n" ColumnName="n" />
+          <ScalarProperty Name="andar" ColumnName="andar" />
+          <ScalarProperty Name="codPostal" ColumnName="codPostal" />
+          <ScalarProperty Name="dataNascimento" ColumnName="dataNascimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Anoes">
+      <EntityTypeMapping TypeName="TP1Model.Ano">
+        <MappingFragment StoreEntitySet="Ano">
+          <ScalarProperty Name="ano1" ColumnName="ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConclusaoCursoes">
+      <EntityTypeMapping TypeName="TP1Model.ConclusaoCurso">
+        <MappingFragment StoreEntitySet="ConclusaoCurso">
+          <ScalarProperty Name="numAluno" ColumnName="numAluno" />
+          <ScalarProperty Name="siglaCurso" ColumnName="siglaCurso" />
+          <ScalarProperty Name="notaFinal" ColumnName="notaFinal" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoordenadorSeccaos">
+      <EntityTypeMapping TypeName="TP1Model.CoordenadorSeccao">
+        <MappingFragment StoreEntitySet="CoordenadorSeccao">
+          <ScalarProperty Name="siglaSeccao" ColumnName="siglaSeccao" />
+          <ScalarProperty Name="ccProfessor" ColumnName="ccProfessor" />
+          <ScalarProperty Name="siglaDepartamento" ColumnName="siglaDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cursoes">
+      <EntityTypeMapping TypeName="TP1Model.Curso">
+        <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="siglaDepartamento" ColumnName="siglaDepartamento" />
+          <ScalarProperty Name="totalCreditos" ColumnName="totalCreditos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamentoes">
+      <EntityTypeMapping TypeName="TP1Model.Departamento">
+        <MappingFragment StoreEntitySet="Departamento">
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inscricaos">
+      <EntityTypeMapping TypeName="TP1Model.Inscricao">
+        <MappingFragment StoreEntitySet="Inscricao">
+          <ScalarProperty Name="numAluno" ColumnName="numAluno" />
+          <ScalarProperty Name="siglaCurso" ColumnName="siglaCurso" />
+          <ScalarProperty Name="siglaSemestreLetivo" ColumnName="siglaSemestreLetivo" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="siglaUC" ColumnName="siglaUC" />
+          <ScalarProperty Name="nota" ColumnName="nota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professors">
+      <EntityTypeMapping TypeName="TP1Model.Professor">
+        <MappingFragment StoreEntitySet="Professor">
+          <ScalarProperty Name="cc" ColumnName="cc" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="areaEspecializacao" ColumnName="areaEspecializacao" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="siglaDepartamento" ColumnName="siglaDepartamento" />
+          <ScalarProperty Name="siglaSeccao" ColumnName="siglaSeccao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professor_UC">
+      <EntityTypeMapping TypeName="TP1Model.Professor_UC">
+        <MappingFragment StoreEntitySet="Professor_UC">
+          <ScalarProperty Name="ccProfessor" ColumnName="ccProfessor" />
+          <ScalarProperty Name="siglaUC" ColumnName="siglaUC" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegenteUCs">
+      <EntityTypeMapping TypeName="TP1Model.RegenteUC">
+        <MappingFragment StoreEntitySet="RegenteUC">
+          <ScalarProperty Name="ccProfessor" ColumnName="ccProfessor" />
+          <ScalarProperty Name="siglaUC" ColumnName="siglaUC" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seccaos">
+      <EntityTypeMapping TypeName="TP1Model.Seccao">
+        <MappingFragment StoreEntitySet="Seccao">
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="siglaDepartamento" ColumnName="siglaDepartamento" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SemestreLetivoes">
+      <EntityTypeMapping TypeName="TP1Model.SemestreLetivo">
+        <MappingFragment StoreEntitySet="SemestreLetivo">
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UC_Semestre">
+      <EntityTypeMapping TypeName="TP1Model.UC_Semestre">
+        <MappingFragment StoreEntitySet="UC_Semestre">
+          <ScalarProperty Name="numSemestre" ColumnName="numSemestre" />
+          <ScalarProperty Name="siglaCurso" ColumnName="siglaCurso" />
+          <ScalarProperty Name="siglaUC" ColumnName="siglaUC" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnidadeCurriculars">
+      <EntityTypeMapping TypeName="TP1Model.UnidadeCurricular">
+        <MappingFragment StoreEntitySet="UnidadeCurricular">
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="numCreditos" ColumnName="numCreditos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matriculas">
+      <EntityTypeMapping TypeName="TP1Model.Matricula">
+        <MappingFragment StoreEntitySet="Matricula">
+          <ScalarProperty Name="numAluno" ColumnName="numAluno" />
+          <ScalarProperty Name="siglaCurso" ColumnName="siglaCurso" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Semestres">
+      <EntityTypeMapping TypeName="TP1Model.Semestre">
+        <MappingFragment StoreEntitySet="Semestre">
+          <ScalarProperty Name="numSemestre" ColumnName="numSemestre" />
+          <ScalarProperty Name="siglaCurso" ColumnName="siglaCurso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditosCursoes">
+      <EntityTypeMapping TypeName="TP1Model.CreditosCurso">
+        <MappingFragment StoreEntitySet="CreditosCurso">
+          <ScalarProperty Name="siglaCurso" ColumnName="siglaCurso" />
+          <ScalarProperty Name="siglaUC" ColumnName="siglaUC" />
+          <ScalarProperty Name="numCreditos" ColumnName="numCreditos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="alunosMatriculadosMaisTresAnos" FunctionName="TP1Model.Store.alunosMatriculadosMaisTresAnos" />
+    <FunctionImportMapping FunctionImportName="estruturaCurso" FunctionName="TP1Model.Store.estruturaCurso" />
+    <FunctionImportMapping FunctionImportName="inscrever_Aluno_UC" FunctionName="TP1Model.Store.inscrever_Aluno_UC" />
+    <FunctionImportMapping FunctionImportName="insert_Aluno_Curso" FunctionName="TP1Model.Store.insert_Aluno_Curso" />
+    <FunctionImportMapping FunctionImportName="insert_Departamento" FunctionName="TP1Model.Store.insert_Departamento" />
+    <FunctionImportMapping FunctionImportName="insert_nota" FunctionName="TP1Model.Store.insert_nota" />
+    <FunctionImportMapping FunctionImportName="insert_Seccao" FunctionName="TP1Model.Store.insert_Seccao" />
+    <FunctionImportMapping FunctionImportName="insert_UC" FunctionName="TP1Model.Store.insert_UC" />
+    <FunctionImportMapping FunctionImportName="insert_UC_Curso" FunctionName="TP1Model.Store.insert_UC_Curso" />
+    <FunctionImportMapping FunctionImportName="listUCwithNoInsc" FunctionName="TP1Model.Store.listUCwithNoInsc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TP1Model.listUCwithNoInsc_Result">
+          <ScalarProperty Name="siglaUC" ColumnName="siglaUC" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="remove_Departamento" FunctionName="TP1Model.Store.remove_Departamento" />
+    <FunctionImportMapping FunctionImportName="remove_Seccao" FunctionName="TP1Model.Store.remove_Seccao" />
+    <FunctionImportMapping FunctionImportName="remove_UC" FunctionName="TP1Model.Store.remove_UC" />
+    <FunctionImportMapping FunctionImportName="remove_UC_Curso" FunctionName="TP1Model.Store.remove_UC_Curso" />
+    <FunctionImportMapping FunctionImportName="update_Departamento" FunctionName="TP1Model.Store.update_Departamento" />
+    <FunctionImportMapping FunctionImportName="update_Seccao" FunctionName="TP1Model.Store.update_Seccao" />
+    <FunctionImportMapping FunctionImportName="update_UC" FunctionName="TP1Model.Store.update_UC" />
+  </EntityContainerMapping>
+</Mapping>
