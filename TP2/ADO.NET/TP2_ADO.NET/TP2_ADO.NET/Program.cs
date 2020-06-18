@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP2_ADO.NET.Ex1.b;
+using EF;
 
 namespace TP2_ADO.NET
 {
@@ -30,9 +31,17 @@ namespace TP2_ADO.NET
 
 
 
+            using (var context = new TP1Entities())
+            {
+                var query = context.Alunoes.Where(s => s.num == 39156).FirstOrDefault<EF.Aluno>();
 
+                Console.WriteLine(query.nome);
+            }
 
-
+            ListMatriculas lm = new ListMatriculas();
+            Entidades.Ano anoCurrente = new Entidades.Ano();
+            anoCurrente.AnoLetivo = 1920;
+            lm.listMatriculas(anoCurrente);
 
 
             //TESTES
@@ -145,10 +154,7 @@ namespace TP2_ADO.NET
             map.Delete(a);
             */
 
-            ListMatriculas lm = new ListMatriculas();
-            Ano anoCurrente = new Ano();
-            anoCurrente.AnoLetivo = 1920;
-            lm.listMatriculas(anoCurrente);
+
         }
     }
 }
