@@ -1,0 +1,2 @@
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csprojAssemblyReference.cache
+C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csproj.CoreCompileInputs.cache
