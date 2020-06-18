@@ -10,3 +10,14 @@ C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\De
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.exe
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.pdb
 C:\Users\Miguel Oliveira\Documents\SI2\GIT_TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csprojAssemblyReference.cache
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EF.exe.config
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EF.exe
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EF.pdb
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.dll
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.xml
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csprojAssemblyReference.cache
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.csproj.CopyComplete
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.exe
+C:\Users\Tiago\Documents\Isel\3Ano\SI2\1920SV\TP2\TP2\ADO.NET\TP2_ADO.NET\EF\obj\Debug\EF.pdb
