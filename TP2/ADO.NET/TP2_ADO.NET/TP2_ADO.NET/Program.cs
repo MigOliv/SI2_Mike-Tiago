@@ -69,13 +69,18 @@ namespace TP2_ADO.NET
             }
 
 
-                using (var context = new TP1Entities())
+
+
+
+            //TESTES
+            /*
+            using (var context = new TP1Entities())
             {
                 var query = context.Alunoes.Where(s => s.num == 39156).FirstOrDefault<EF.Aluno>();
 
                 Console.WriteLine(query.nome);
             }
-
+            */
 
             /*
             ListMatriculas lm = new ListMatriculas();
@@ -83,9 +88,6 @@ namespace TP2_ADO.NET
             anoCurrente.AnoLetivo = 1920;
             lm.listMatriculas(anoCurrente);
             */
-
-            //TESTES
-
             /*
             //ALINEA K
             Inscricao inscr2 = new Inscricao();
@@ -199,7 +201,7 @@ namespace TP2_ADO.NET
 
         private static void RouteCommand(int n)
         {
-            try
+           /* try
             {
                 IDisposable context;
                 if (ADOnEF)
@@ -210,7 +212,7 @@ namespace TP2_ADO.NET
                 else context = new Entities();
 
                 using (context)
-                {
+                {*/
                     Console.Clear();
                     switch (commands[n - 1])
                     {
@@ -234,18 +236,20 @@ namespace TP2_ADO.NET
                         case "Sair": isExit = true; break;
 
                     }
-                }
-            }
-            catch (Exception e)
+            //}
+            //}
+            /*catch (Exception e)
             {
                 ErrorHandler(e);
-            }
+            }*/
+
+            Console.WriteLine("\n");
         }
 
         private static void deleteAluno()
         {
-            int nif = GetNumber(1, "Insira o NIF: ");
-            methods.deleteAluno(nif);
+            int nrAluno = GetNumber(1, "Insira o numero de Aluno: ");
+            methods.deleteAluno(nrAluno);
 
         }
 
@@ -266,7 +270,7 @@ namespace TP2_ADO.NET
             //GetNumber só retorna inteiros
             //double nota = 
 
-            methods.insert_nota(nrAluno, siglaUC, nota, ano);
+          //  methods.insert_nota(nrAluno, siglaUC, nota, ano);
 
         }
 
@@ -289,7 +293,7 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a sigla do Curso: ");
             string siglaCurso = Console.ReadLine();
 
-            methods.inscrever_Aluno_UC(nrAluno, siglaCurso, ano);
+            methods.insert_Aluno_Curso(nrAluno, siglaCurso, ano);
         }
 
         private static void remove_UC_Curso()
