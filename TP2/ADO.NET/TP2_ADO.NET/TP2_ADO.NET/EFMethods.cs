@@ -113,18 +113,33 @@ namespace TP2_ADO.NET
                 context.SaveChanges();
             }
         }
-
+        
         public override void listMatriculas(int anoLetivo)
         {
             using (var context = new TP1Entities())
             {
-                var aluno = new Aluno();
-                aluno.num = nrAluno;
-                context.Alunoes.Attach(aluno);
-                context.Alunoes.Remove(aluno);
+                var total = new Dictionary<string, int>();
+                Inscricao insc = new Inscricao();
+                insc.ano = anoLetivo;
 
-                context.SaveChanges();
+                var res = context.Inscricaos.Select(x => new { x.siglaUC }).ToList();
 
+                foreach (var s in res)
+                {
+                    if (total.ContainsKey(s.siglaUC))
+                    {
+                        total[s.siglaUC] += 1;
+                    }
+                    else
+                    {
+                        total.Add(s.siglaUC, 1);
+                    }
+                }
+
+                foreach (KeyValuePair<string, int> kvp in total)
+                {
+                    Console.WriteLine("Unidade Curricular = {0}, Inscrições = {1}", kvp.Key, kvp.Value);
+                }
             }
         }
 
