@@ -52,15 +52,9 @@ namespace TP2_ADO.NET
                 }
 
                 RouteCommand(n);
-
-
             }
 
-
-
-
-
-            //TESTES
+              //TESTES
             /*
             using (var context = new TP1Entities())
             {
@@ -183,7 +177,6 @@ namespace TP2_ADO.NET
             Aluno a = map.Read(39156);
             map.Delete(a);
             */
-
 
         }
 

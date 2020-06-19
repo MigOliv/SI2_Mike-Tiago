@@ -11,19 +11,35 @@ namespace TP2_ADO.NET
 {
     class ADOMethods : Methods
     {
-        public override void insertDepartamento(String sigla, String descricao) {
-            Departamento dep = new Departamento();
-            dep.Sigla = sigla;
-            dep.Descricao = descricao;
+        public override void insertDepartamento(String sigla, String descricao) 
+        {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
 
+            try
+            {
+                Departamento dep = new Departamento();
+                dep.Sigla = sigla;
+                dep.Descricao = descricao;
 
-            IMapperDepartamento map = new MapperDepartamento();
+                IMapperDepartamento map = new MapperDepartamento();
 
-            map.Create(dep);
+                map.Create(dep);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro na inserção");
+            }
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void deleteDepartamento(String sigla)
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
 
             try
             {
@@ -40,191 +56,332 @@ namespace TP2_ADO.NET
                 Console.WriteLine("Departamento nao pode ser removido ou nao existe");
 
             }
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void updateDepartamento(String sigla, String new_descricao)
         {
-            Departamento dep = new Departamento();
-            dep.Sigla = sigla;
-            dep.Descricao = new_descricao;
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+            try
+            {
+                Departamento dep = new Departamento();
+                dep.Sigla = sigla;
+                dep.Descricao = new_descricao;
 
+                IMapperDepartamento map = new MapperDepartamento();
 
-            IMapperDepartamento map = new MapperDepartamento();
-
-            map.Update(dep);
+                map.Update(dep);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Departamento nao pode ser atualizado ou nao existe");
+            }
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void insertSeccao(String sigla, String siglaDepartamento, String descricao)
         {
-            Seccao seccao = new Seccao();
-            seccao.Sigla = sigla;
-            seccao.SiglaDepartamento = siglaDepartamento;
-            seccao.Descricao = descricao;
+            try
+            {
+                Seccao seccao = new Seccao();
+                seccao.Sigla = sigla;
+                seccao.SiglaDepartamento = siglaDepartamento;
+                seccao.Descricao = descricao;
 
-            IMapperSeccao map = new MapperSeccao();
+                IMapperSeccao map = new MapperSeccao();
 
-            map.Create(seccao);
+                map.Create(seccao);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
         }
 
         public override void removeSeccao(String sigla, String siglaDepartamento)
         {
-            Seccao seccao = new Seccao();
-            seccao.Sigla = sigla;
-            seccao.SiglaDepartamento = siglaDepartamento;
+            try
+            {
+                Seccao seccao = new Seccao();
+                seccao.Sigla = sigla;
+                seccao.SiglaDepartamento = siglaDepartamento;
 
-            IMapperSeccao map = new MapperSeccao();
+                IMapperSeccao map = new MapperSeccao();
 
-            map.Delete(seccao);
+                map.Delete(seccao);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Secção nao pode ser removida ou nao existe");
+            }
         }
 
         public override void updateSeccao(String sigla, String siglaDepartamento, String new_descricao)
         {
-            Seccao seccao = new Seccao();
-            seccao.Sigla = sigla;
-            seccao.SiglaDepartamento = siglaDepartamento;
-            seccao.Descricao = new_descricao;
+            try
+            {
+                Seccao seccao = new Seccao();
+                seccao.Sigla = sigla;
+                seccao.SiglaDepartamento = siglaDepartamento;
+                seccao.Descricao = new_descricao;
 
-            IMapperSeccao map = new MapperSeccao();
+                IMapperSeccao map = new MapperSeccao();
 
-            map.Update(seccao);
+                map.Update(seccao);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Secção nao pode ser atualizada ou nao existe");
+            }
         }
 
         public override void insertUC(String sigla, String descricao, int nrCreditos)
         {
-            UnidadeCurricular uc = new UnidadeCurricular();
-            uc.Sigla = sigla;
-            uc.Descricao = descricao;
-            uc.NumCreditos = nrCreditos;
+            try
+            {
+                UnidadeCurricular uc = new UnidadeCurricular();
+                uc.Sigla = sigla;
+                uc.Descricao = descricao;
+                uc.NumCreditos = nrCreditos;
 
-            IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
+                IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
 
-            map.Create(uc);
-  
+                map.Create(uc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
 
         }
         public override void deleteUC(String sigla)
         {
-            UnidadeCurricular uc = new UnidadeCurricular();
-            uc.Sigla = sigla;
-            IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
-            map.Delete(uc);
+            try
+            {
+                UnidadeCurricular uc = new UnidadeCurricular();
+                uc.Sigla = sigla;
+                IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
+                map.Delete(uc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("UC não pode ser removida ou não existe");
+            }
         }
 
         public override void updateUC(String sigla, String new_descricao, int new_NrCreditos)
         {
-            UnidadeCurricular uc = new UnidadeCurricular();
-            uc.Sigla = sigla;
-            uc.Descricao = new_descricao;
-            uc.NumCreditos = new_NrCreditos;
+            try
+            {
+                UnidadeCurricular uc = new UnidadeCurricular();
+                uc.Sigla = sigla;
+                uc.Descricao = new_descricao;
+                uc.NumCreditos = new_NrCreditos;
 
-            IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
+                IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
 
-            map.Update(uc);
+                map.Update(uc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("UC não pode ser atualizada ou não existe");
+            }
         }
 
         public override void estruturaCurso(String sigla, String siglaDepartamento, String descricao)
         {
-            Curso curs = new Curso();
-            curs.SiglaDepartamento = siglaDepartamento;
-            curs.Sigla = sigla;
-            curs.Descricao = descricao;
+            try
+            {
+                Curso curs = new Curso();
+                curs.SiglaDepartamento = siglaDepartamento;
+                curs.Sigla = sigla;
+                curs.Descricao = descricao;
 
 
-            IMapperCurso map = new MapperCurso();
-            map.Create(curs);
+                IMapperCurso map = new MapperCurso();
+                map.Create(curs);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
         }
 
         public override void insert_UC_Curso(String siglaCurso, String siglaUC, int ano, int nrSemestre)
         {
-            UC_Semestre uc_sem = new UC_Semestre();
-            uc_sem.numSemestre = nrSemestre;
-            uc_sem.siglaCurso = siglaCurso;
-            uc_sem.siglaUC = siglaUC;
-            uc_sem.ano = ano;
 
-            IMapperUC_Semestre map = new MapperUC_Semestre();
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
 
-            map.Create(uc_sem);   
+            try
+            {
+                UC_Semestre uc_sem = new UC_Semestre();
+                uc_sem.numSemestre = nrSemestre;
+                uc_sem.siglaCurso = siglaCurso;
+                uc_sem.siglaUC = siglaUC;
+                uc_sem.ano = ano;
+
+                IMapperUC_Semestre map = new MapperUC_Semestre();
+
+                map.Create(uc_sem);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void remove_UC_Curso(String siglaCurso, String siglaUC, int ano, int nrSemestre)
         {
-            UC_Semestre uc_sem = new UC_Semestre();
-            uc_sem.numSemestre = nrSemestre;
-            uc_sem.siglaCurso = siglaCurso;
-            uc_sem.siglaUC = siglaUC;
-            uc_sem.ano = ano;
+            try
+            {
+                UC_Semestre uc_sem = new UC_Semestre();
+                uc_sem.numSemestre = nrSemestre;
+                uc_sem.siglaCurso = siglaCurso;
+                uc_sem.siglaUC = siglaUC;
+                uc_sem.ano = ano;
 
-            IMapperUC_Semestre map = new MapperUC_Semestre();
+                IMapperUC_Semestre map = new MapperUC_Semestre();
 
-            map.Delete(uc_sem);
+                map.Delete(uc_sem);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
         }
 
         public override void insert_Aluno_Curso(int nrAluno, String siglaCurso, int ano)
         {
-            Matricula matr = new Matricula();
-            matr.numAluno = nrAluno;
-            matr.siglaCurso = siglaCurso;
-            matr.ano = ano;
+            try
+            {
+                Matricula matr = new Matricula();
+                matr.numAluno = nrAluno;
+                matr.siglaCurso = siglaCurso;
+                matr.ano = ano;
 
-            IMapperMatricula map = new MapperMatricula();
-            map.Create(matr);
+                IMapperMatricula map = new MapperMatricula();
+                map.Create(matr);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
         }
 
         public override void inscrever_Aluno_UC(int nrAluno, String siglaUC, int ano)
         {
-            Inscricao inscr = new Inscricao();
-            inscr.numAluno = nrAluno;
-            inscr.siglaUC = siglaUC;
-            inscr.ano = ano;
+            try
+            {
+                Inscricao inscr = new Inscricao();
+                inscr.numAluno = nrAluno;
+                inscr.siglaUC = siglaUC;
+                inscr.ano = ano;
 
-            IMapperInscricao map = new MapperInscricao();
-            map.Create(inscr);
+                IMapperInscricao map = new MapperInscricao();
+                map.Create(inscr);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
+
         }
 
         public override void insert_nota(int nrAluno, String siglaUC, decimal nota, int ano)
         {
-            Inscricao inscr2 = new Inscricao();
-            inscr2.numAluno = nrAluno;
-            inscr2.siglaUC = siglaUC;
-            inscr2.nota = nota;
-            inscr2.ano = ano;
+            try
+            {
+                Inscricao inscr2 = new Inscricao();
+                inscr2.numAluno = nrAluno;
+                inscr2.siglaUC = siglaUC;
+                inscr2.nota = nota;
+                inscr2.ano = ano;
 
-            IMapperInscricao map = new MapperInscricao();
-            map.Update(inscr2);
+                IMapperInscricao map = new MapperInscricao();
+                map.Update(inscr2);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
+            }
         }
 
         public override void listMatriculas(int anoLetivo)
         {
-            var total = new Dictionary<string, int>();
 
-            IMapperInscricao map = new MapperInscricao();
+            var watch = new System.Diagnostics.Stopwatch();
 
-            List<string> test = map.ReadByYear(anoLetivo);
+            watch.Start();
 
-            foreach (string s in test)
+            try
             {
-                if (total.ContainsKey(s))
+                var total = new Dictionary<string, int>();
+
+                IMapperInscricao map = new MapperInscricao();
+
+                List<string> test = map.ReadByYear(anoLetivo);
+
+                foreach (string s in test)
                 {
-                    total[s] += 1;
+                    if (total.ContainsKey(s))
+                    {
+                        total[s] += 1;
+                    }
+                    else
+                    {
+                        total.Add(s, 1);
+                    }
                 }
-                else
+                foreach (KeyValuePair<string, int> kvp in total)
                 {
-                    total.Add(s, 1);
+                    Console.WriteLine("Unidade Curricular = {0}, Inscrições = {1}", kvp.Key, kvp.Value);
                 }
             }
-            foreach (KeyValuePair<string, int> kvp in total)
+            catch (Exception ex)
             {
-                Console.WriteLine("Unidade Curricular = {0}, Inscrições = {1}", kvp.Key, kvp.Value);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de inserção");
             }
+            watch.Stop();
+
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
 
         public override void deleteAluno(int nrAluno)
         {
-            IMapperAluno map = new MapperAluno();
-            Aluno a = map.Read(nrAluno);
-            map.Delete(a);
+            try
+            {
+                IMapperAluno map = new MapperAluno();
+                Aluno a = map.Read(nrAluno);
+                map.Delete(a);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Aluno não pode ser removido ou não existe");
+            }
         }
 
 

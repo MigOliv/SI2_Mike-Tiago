@@ -26,11 +26,16 @@ namespace TP2_ADO.NET
 
         public override void deleteDepartamento(string sigla)   //Alinea d
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             using (var context = new TP1Entities())
             {
                 context.remove_Departamento(sigla);
                 context.SaveChanges();
             }
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void deleteUC(string sigla)         //Alinea f
@@ -46,6 +51,7 @@ namespace TP2_ADO.NET
         {
             using (var context = new TP1Entities())
             {
+                //context.Database.Log = Console.Write;
                 context.estruturaCurso(siglaDepartamento, sigla, descricao);
                 context.SaveChanges();
             }
@@ -62,11 +68,17 @@ namespace TP2_ADO.NET
 
         public override void insertDepartamento(string sigla, string descricao)     //Alinea d
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             using (var context = new TP1Entities())
             {
                 context.insert_Departamento(sigla, descricao);
                 context.SaveChanges();
             }
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void insertSeccao(string sigla, string siglaDepartamento, string descricao)     //Alinea e
@@ -107,15 +119,24 @@ namespace TP2_ADO.NET
 
         public override void insert_UC_Curso(string siglaCurso, string siglaUC, int ano, int nrSemestre)    //Alinea h
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             using (var context = new TP1Entities())
             {
                 context.insert_UC_Curso(nrSemestre, siglaCurso, siglaUC, ano);      // TESTAR
                 context.SaveChanges();
             }
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
         
         public override void listMatriculas(int anoLetivo)
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             using (var context = new TP1Entities())
             {
                 var total = new Dictionary<string, int>();
@@ -141,6 +162,8 @@ namespace TP2_ADO.NET
                     Console.WriteLine("Unidade Curricular = {0}, Inscrições = {1}", kvp.Key, kvp.Value);
                 }
             }
+            watch.Stop(); 
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void removeSeccao(string sigla, string siglaDepartamento)   //Alinea e
@@ -163,11 +186,16 @@ namespace TP2_ADO.NET
 
         public override void updateDepartamento(string sigla, string new_descricao)     //Alinea d
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             using (var context = new TP1Entities())
             {
                 context.update_Departamento(sigla, new_descricao);
                 context.SaveChanges();
             }
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void updateSeccao(string sigla, string siglaDepartamento, string new_descricao) //Alinea e
