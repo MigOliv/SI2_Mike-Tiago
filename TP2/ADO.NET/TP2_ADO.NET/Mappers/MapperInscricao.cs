@@ -104,7 +104,7 @@ namespace Mappers
             throw new NotImplementedException();
         }
 
-        public List<string> ReadByYear(Ano anoCurrente)
+        public List<string> ReadByYear(int anoCurrente)
         {
             Inscricao inscricao = new Inscricao();
             List<string> ucs = new List<string>();
@@ -126,7 +126,7 @@ namespace Mappers
                 SqlParameter p6 = new SqlParameter("@ano", anoCurrente.AnoLetivo);
                 cmd.Parameters.Add(p6);
                 */
-                SqlParameter p1 = new SqlParameter("@ano", anoCurrente.AnoLetivo);
+                SqlParameter p1 = new SqlParameter("@ano", anoCurrente);
                 cmd.Parameters.Add(p1);
 
                 using (var cn = new SqlConnection(cs))

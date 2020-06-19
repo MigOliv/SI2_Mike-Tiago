@@ -14,7 +14,7 @@ namespace TP2_ADO.NET
 {
     class Program
     {
-        private static bool ADOnEF = true;
+        private static bool ADOnEF = false;
         private static Methods methods;
         private static bool isExit = false;
         private static string database = "TP1";
@@ -26,19 +26,7 @@ namespace TP2_ADO.NET
             "Listar o Total de Matriculas","Eliminar um Aluno","Sair"      
         };
 
-        private enum Option
-        {
-            Unknown = -1,
-            Exit
-        }
-
-        private Option DisplayMenu()
-        {
-            Option option = Option.Unknown;
-
-            return option;
-
-        }
+   
         static void Main(string[] args)
         {
             if (ADOnEF) methods = new ADOMethods();

@@ -172,7 +172,7 @@ namespace TP2_ADO.NET
             map.Create(inscr);
         }
 
-        public override void insert_nota(int nrAluno, String siglaUC, double nota, int ano)
+        public override void insert_nota(int nrAluno, String siglaUC, decimal nota, int ano)
         {
             Inscricao inscr2 = new Inscricao();
             inscr2.numAluno = nrAluno;
@@ -186,7 +186,29 @@ namespace TP2_ADO.NET
 
         public override void listMatriculas(int anoLetivo)
         {
+            var total = new Dictionary<string, int>();
 
+            IMapperInscricao map = new MapperInscricao();
+
+            List<string> test = map.ReadByYear(anoLetivo);
+
+            foreach (string s in test)
+            {
+                if (total.ContainsKey(s))
+                {
+                    total[s] += 1;
+                }
+                else
+                {
+                    total.Add(s, 1);
+                }
+
+            }
+
+            foreach (KeyValuePair<string, int> kvp in total)
+            {
+                Console.WriteLine("Unidade Curricular = {0}, Inscrições = {1}", kvp.Key, kvp.Value);
+            }
         }
         public override void deleteAluno(int nrAluno)
         {

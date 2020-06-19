@@ -9,6 +9,6 @@ namespace Mappers_Interface
 {
     public interface IMapperInscricao : IMapper<Inscricao, int>
     {
-        List<string> ReadByYear(Ano anoCurrente);
+        List<string> ReadByYear(int anoCurrente);
     }
 }

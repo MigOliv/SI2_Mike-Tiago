@@ -26,7 +26,7 @@ namespace TP2_ADO.NET
 
         public abstract void insert_Aluno_Curso(int nrAluno, String siglaCurso, int ano);
         public abstract void inscrever_Aluno_UC(int nrAluno, String siglaUC, int ano);
-        public abstract void insert_nota(int nrAluno, String siglaUC, double nota, int ano);
+        public abstract void insert_nota(int nrAluno, String siglaUC, decimal nota, int ano);
         public abstract void listMatriculas(int anoLetivo);
         public abstract void deleteAluno(int nrAluno);
     }

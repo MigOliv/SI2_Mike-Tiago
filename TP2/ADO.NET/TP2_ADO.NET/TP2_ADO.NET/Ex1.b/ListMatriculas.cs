@@ -11,7 +11,7 @@ namespace TP2_ADO.NET.Ex1.b
 {
     public class ListMatriculas
     {
-        public void listMatriculas(Ano anoCurrente)
+        public void listMatriculas(int anoCurrente)
         {
             var total = new Dictionary<string, int>();
 
