@@ -14,7 +14,7 @@ namespace TP2_ADO.NET
 {
     class Program
     {
-        private static bool ADOnEF = true;
+        private static bool ADOnEF = false;
         private static Methods methods;
         private static bool isExit = false;
         private static string database = "TP1";

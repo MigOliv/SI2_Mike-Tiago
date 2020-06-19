@@ -24,12 +24,22 @@ namespace TP2_ADO.NET
 
         public override void deleteDepartamento(String sigla)
         {
-            Departamento dep = new Departamento();
-            dep.Sigla = sigla;
 
-            IMapperDepartamento map = new MapperDepartamento();
+            try
+            {
+                Departamento dep = new Departamento();
+                dep.Sigla = sigla;
 
-            map.Delete(dep);
+                IMapperDepartamento map = new MapperDepartamento();
+
+                map.Delete(dep);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Departamento nao pode ser removido ou nao existe");
+
+            }
         }
 
         public override void updateDepartamento(String sigla, String new_descricao)
@@ -202,14 +212,14 @@ namespace TP2_ADO.NET
                 {
                     total.Add(s, 1);
                 }
-
             }
-
             foreach (KeyValuePair<string, int> kvp in total)
             {
                 Console.WriteLine("Unidade Curricular = {0}, Inscrições = {1}", kvp.Key, kvp.Value);
             }
         }
+
+
         public override void deleteAluno(int nrAluno)
         {
             IMapperAluno map = new MapperAluno();

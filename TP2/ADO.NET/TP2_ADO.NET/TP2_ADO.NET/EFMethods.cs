@@ -1,6 +1,7 @@
 ﻿using EF;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,16 @@ namespace TP2_ADO.NET
     {
         public override void deleteAluno(int nrAluno)
         {
-            throw new NotImplementedException();
+            using (var context = new TP1Entities())
+            {
+                var aluno = new Aluno();
+                aluno.num = nrAluno;
+                context.Alunoes.Attach(aluno);
+                context.Alunoes.Remove(aluno);
+
+                context.SaveChanges();
+
+            }
         }
 
         public override void deleteDepartamento(string sigla)   //Alinea d
@@ -19,6 +29,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.remove_Departamento(sigla);
+                context.SaveChanges();
             }
         }
 
@@ -27,6 +38,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.remove_UC(sigla);
+                context.SaveChanges();
             }
         }
 
@@ -35,6 +47,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.estruturaCurso(siglaDepartamento, sigla, descricao);
+                context.SaveChanges();
             }
         }
 
@@ -43,6 +56,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.inscrever_Aluno_UC(nrAluno, siglaUC, ano);  // TESTAR
+                context.SaveChanges();
             }
         }
 
@@ -51,6 +65,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.insert_Departamento(sigla, descricao);
+                context.SaveChanges();
             }
         }
 
@@ -59,6 +74,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.insert_Seccao(sigla, siglaDepartamento, descricao);
+                context.SaveChanges();
             }
         }
 
@@ -67,6 +83,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.insert_UC(sigla, descricao, nrCreditos);
+                context.SaveChanges();
             }
         }
 
@@ -75,6 +92,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.insert_Aluno_Curso(nrAluno, siglaCurso, ano);       // TESTAR
+                context.SaveChanges();
             }
         }
 
@@ -83,6 +101,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.insert_nota(nrAluno, siglaUC, nota, ano);       // TESTAR
+                context.SaveChanges();
             }
         }
 
@@ -91,12 +110,22 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.insert_UC_Curso(nrSemestre, siglaCurso, siglaUC, ano);      // TESTAR
+                context.SaveChanges();
             }
         }
 
         public override void listMatriculas(int anoLetivo)
         {
-            throw new NotImplementedException();
+            using (var context = new TP1Entities())
+            {
+                var aluno = new Aluno();
+                aluno.num = nrAluno;
+                context.Alunoes.Attach(aluno);
+                context.Alunoes.Remove(aluno);
+
+                context.SaveChanges();
+
+            }
         }
 
         public override void removeSeccao(string sigla, string siglaDepartamento)   //Alinea e
@@ -104,6 +133,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.remove_Seccao(sigla, siglaDepartamento);
+                context.SaveChanges();
             }
         }
 
@@ -112,6 +142,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.remove_UC_Curso(siglaCurso, siglaUC, ano);      // TESTAR e verificar porquê o parametro nrSemestre?
+                context.SaveChanges();
             }
         }
 
@@ -120,6 +151,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.update_Departamento(sigla, new_descricao);
+                context.SaveChanges();
             }
         }
 
@@ -128,6 +160,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.update_Seccao(sigla, siglaDepartamento, new_descricao);
+                context.SaveChanges();
             }
         }
 
@@ -136,6 +169,7 @@ namespace TP2_ADO.NET
             using (var context = new TP1Entities())
             {
                 context.update_UC(sigla, new_descricao, new_NrCreditos);
+                context.SaveChanges();
             }
         }
     }
