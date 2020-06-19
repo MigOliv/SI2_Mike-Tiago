@@ -212,9 +212,9 @@ namespace TP2_ADO.NET
         }
         public override void deleteAluno(int nrAluno)
         {
-
-   
-
+            IMapperAluno map = new MapperAluno();
+            Aluno a = map.Read(nrAluno);
+            map.Delete(a);
         }
 
 

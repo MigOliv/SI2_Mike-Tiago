@@ -14,7 +14,7 @@ namespace TP2_ADO.NET
 {
     class Program
     {
-        private static bool ADOnEF = false;
+        private static bool ADOnEF = true;
         private static Methods methods;
         private static bool isExit = false;
         private static string database = "TP1";
@@ -236,36 +236,35 @@ namespace TP2_ADO.NET
 
         private static void deleteAluno()
         {
-            int nrAluno = GetNumber(1, "Insira o numero de Aluno: ");
+            int nrAluno = (int)GetNumber(1, "Insira o numero de Aluno: ");
             methods.deleteAluno(nrAluno);
 
         }
 
         private static void listMatriculas()
         {
-            int ano = GetNumber(1, "Insira o ano Letivo: ");
+            int ano = (int)GetNumber(1, "Insira o ano Letivo: ");
             methods.listMatriculas(ano);
         }
 
         private static void insert_nota()
         { 
-            int nrAluno = GetNumber(1, "Insira o numero de Aluno: ");
-            int ano = GetNumber(1, "Insira o ano: ");
+            int nrAluno = (int)GetNumber(1, "Insira o numero de Aluno: ");
+            int ano = (int)GetNumber(1, "Insira o ano: ");
 
             Console.WriteLine("Insira a sigla da UC: ");
             string siglaUC = Console.ReadLine();
+            
+            decimal nota = (decimal)GetNumber(1, "Insira a nota: ");
 
-            //GetNumber só retorna inteiros
-            //double nota = 
-
-          //  methods.insert_nota(nrAluno, siglaUC, nota, ano);
+            methods.insert_nota(nrAluno, siglaUC, nota, ano);
 
         }
 
         private static void inscrever_Aluno_UC()
         {
-            int nrAluno = GetNumber(1, "Insira o numero de Aluno: ");
-            int ano = GetNumber(1, "Insira o ano: ");
+            int nrAluno = (int)GetNumber(1, "Insira o numero de Aluno: ");
+            int ano = (int)GetNumber(1, "Insira o ano: ");
 
             Console.WriteLine("Insira a sigla da UC: ");
             string siglaUC = Console.ReadLine();
@@ -275,8 +274,8 @@ namespace TP2_ADO.NET
 
         private static void insert_Aluno_Curso()
         {
-            int nrAluno = GetNumber(1, "Insira o numero de Aluno: ");
-            int ano = GetNumber(1, "Insira o ano: ");
+            int nrAluno = (int)GetNumber(1, "Insira o numero de Aluno: ");
+            int ano = (int)GetNumber(1, "Insira o ano: ");
 
             Console.WriteLine("Insira a sigla do Curso: ");
             string siglaCurso = Console.ReadLine();
@@ -291,8 +290,8 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a sigla da UC: ");
             string siglaUC = Console.ReadLine();
             
-            int ano = GetNumber(1, "Insira o ano: ");
-            int nrSemestre = GetNumber(1, "Insira o numero do Semestre: ");
+            int ano = (int)GetNumber(1, "Insira o ano: ");
+            int nrSemestre = (int)GetNumber(1, "Insira o numero do Semestre: ");
 
             methods.remove_UC_Curso(siglaCurso, siglaUC, ano, nrSemestre);
         }
@@ -304,8 +303,8 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a sigla da UC: ");
             string siglaUC = Console.ReadLine();
 
-            int ano = GetNumber(1, "Insira o ano: ");
-            int nrSemestre = GetNumber(1, "Insira o numero do Semestre: ");
+            int ano = (int)GetNumber(1, "Insira o ano: ");
+            int nrSemestre = (int)GetNumber(1, "Insira o numero do Semestre: ");
 
             methods.insert_UC_Curso(siglaCurso, siglaUC, ano, nrSemestre);
         }
@@ -329,7 +328,7 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a nova descricao: ");
             string new_descricao = Console.ReadLine();
 
-            int new_nrCreditos = GetNumber(1, "Insira o numero de creditos: ");
+            int new_nrCreditos = (int)GetNumber(1, "Insira o numero de creditos: ");
 
             methods.updateUC(siglaUC, new_descricao, new_nrCreditos);
         }
@@ -349,7 +348,7 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a nova descricao: ");
             string descricao = Console.ReadLine();
 
-            int nrCreditos = GetNumber(1, "Insira o numero de creditos: ");
+            int nrCreditos = (int)GetNumber(1, "Insira o numero de creditos: ");
 
             methods.insertUC(siglaUC, descricao, nrCreditos);
         }
@@ -419,14 +418,14 @@ namespace TP2_ADO.NET
             methods.insertDepartamento(siglaDepartamento, descricao);
         }
 
-        public static int GetNumber(int min, string request)
+        public static double GetNumber(double min, string request)
         {
-            int number = min - 1;
+            double number = min - 1;
             while (number == min - 1)
             {
                 Console.WriteLine(request);
                 string snumber = Console.ReadLine();
-                if (!int.TryParse(snumber, out number))
+                if (!double.TryParse(snumber, out number))
                 {
                     Console.WriteLine("Valor Inválido");
                 }
