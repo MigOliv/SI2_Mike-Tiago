@@ -15,7 +15,7 @@ namespace TP2_ADO.NET
 {
     class Program
     {
-        private static bool ADOnEF = true;
+        private static bool ADOnEF = false;
         private static Methods methods;
         private static bool isExit = false;
         private static string database = "TP1";
@@ -195,9 +195,8 @@ namespace TP2_ADO.NET
                     context = new Context(conString);
                 }
                 else context = new Entities();
-
-                using (context)
-                {*/
+                */
+               
                     Console.Clear();
                     switch (commands[n - 1])
                     {
@@ -223,7 +222,7 @@ namespace TP2_ADO.NET
 
                     }
             }
-            //}
+            
             catch (Exception e)
             {
                 ErrorHandler(e);
@@ -234,11 +233,15 @@ namespace TP2_ADO.NET
 
         private static void updateNumCreditos()
         {
+            TP1Entities context1 = new TP1Entities();
+
             Console.WriteLine("Insira a sigla da primeira UC: ");
             string siglaUC1 = Console.ReadLine();
             Console.WriteLine("Insira a sigla da segunda UC: ");
             string siglaUC2 = Console.ReadLine();
-            EFMethods.updateNumCreditos(siglaUC1, siglaUC2);
+            //methods = new EFMethods();
+           
+            EFMethods.updateNumCreditos(context1,siglaUC1, siglaUC2);
         }
 
         private static void deleteAluno()
@@ -356,10 +359,14 @@ namespace TP2_ADO.NET
 
         private static void deleteUC()
         {
+
+            TP1Entities context1 = new TP1Entities();
+
             Console.WriteLine("Insira a sigla da UC: ");
             string siglaUC = Console.ReadLine();
+            //methods.deleteUC(siglaUC);
 
-            methods.deleteUC(siglaUC);
+            EFMethods.deleteUC(context1, siglaUC);
         }
 
         private static void insertUC()

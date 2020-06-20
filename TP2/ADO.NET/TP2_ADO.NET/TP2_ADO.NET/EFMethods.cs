@@ -44,6 +44,15 @@ namespace TP2_ADO.NET
             }
         }
 
+        public static void deleteUC(TP1Entities context,string sigla)         //Alinea f
+        {
+           
+                context.remove_UC(sigla);
+                context.SaveChanges();
+            
+        }
+
+
         public override void estruturaCurso(string sigla, string siglaDepartamento, string descricao)   //Alinea g
         {
             using (var context = new TP1Entities())
@@ -190,12 +199,13 @@ namespace TP2_ADO.NET
             }
         }
 
-        internal static void updateNumCreditos(string siglaUC1, string siglaUC2)
+        public static void updateNumCreditos(TP1Entities context, string siglaUC1, string siglaUC2)
         {
             UnidadeCurricular uc1 = null;
             UnidadeCurricular uc2 = null;
-            using (var context = new TP1Entities())
-            {
+            
+            //using (var context = new TP1Entities())
+            //{
                 try
                 {
                     uc1 = context.UnidadeCurriculars.Where(s => s.sigla == siglaUC1).FirstOrDefault<UnidadeCurricular>();
@@ -211,8 +221,8 @@ namespace TP2_ADO.NET
                 {
                     Console.WriteLine("Concurrency Exception Ocurred.");
                 }
-                
-            }
+               
+            //}
         }
     }
 }

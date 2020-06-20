@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EF;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,5 +31,7 @@ namespace TP2_ADO.NET
         public abstract void insert_nota(int nrAluno, String siglaUC, decimal nota, int ano);
         public abstract void listMatriculas(int anoLetivo);
         public abstract void deleteAluno(int nrAluno);
+
+        //public abstract void updateNumCreditos(DbContext context, string sigla1, string sigla2);
     }
 }

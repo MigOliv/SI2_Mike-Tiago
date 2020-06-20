@@ -3,6 +3,7 @@ using Mappers;
 using Mappers_Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -233,6 +234,11 @@ namespace TP2_ADO.NET
             map.Delete(a); 
         }
 
-
+        /*
+        public override void updateNumCreditos(DbContext context,string sigla1, string sigla2)
+        {
+            throw new NotImplementedException();
+        }
+        */
     }
 }
