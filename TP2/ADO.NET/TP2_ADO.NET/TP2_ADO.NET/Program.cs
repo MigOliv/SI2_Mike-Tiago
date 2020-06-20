@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TP2_ADO.NET.Ex1.b;
 using EF;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace TP2_ADO.NET
 {
@@ -241,7 +242,7 @@ namespace TP2_ADO.NET
         {
             int ano = (int)GetNumber(1, "Insira o ano Letivo: ");
 
-            var watch = new System.Diagnostics.Stopwatch();
+            var watch = new Stopwatch();
             watch.Start();
 
             methods.listMatriculas(ano);
@@ -310,7 +311,7 @@ namespace TP2_ADO.NET
             int ano = (int)GetNumber(1, "Insira o ano: ");
             int nrSemestre = (int)GetNumber(1, "Insira o numero do Semestre: ");
 
-            var watch = new System.Diagnostics.Stopwatch();
+            var watch = new Stopwatch();
             watch.Start();
 
             methods.insert_UC_Curso(siglaCurso, siglaUC, ano, nrSemestre);
@@ -406,7 +407,7 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a nova descricao: ");
             string descricao = Console.ReadLine();
 
-            var watch = new System.Diagnostics.Stopwatch();
+            var watch = new Stopwatch();
             watch.Start();
 
             methods.updateDepartamento(siglaDepartamento, descricao);
@@ -420,7 +421,7 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a sigla do Departamento: ");
             string siglaDepartamento = Console.ReadLine();
 
-            var watch = new System.Diagnostics.Stopwatch();
+            var watch = new Stopwatch();
             watch.Start();
 
             methods.deleteDepartamento(siglaDepartamento);
@@ -437,7 +438,7 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a descricao: ");
             string descricao = Console.ReadLine();
 
-            var watch = new System.Diagnostics.Stopwatch();
+            var watch = new Stopwatch();
             watch.Start();
 
             methods.insertDepartamento(siglaDepartamento, descricao);
