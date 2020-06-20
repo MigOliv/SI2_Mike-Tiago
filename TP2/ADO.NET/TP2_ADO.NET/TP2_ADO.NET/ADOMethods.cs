@@ -13,9 +13,6 @@ namespace TP2_ADO.NET
     {
         public override void insertDepartamento(String sigla, String descricao) 
         {
-            var watch = new System.Diagnostics.Stopwatch();
-            watch.Start();
-
             try
             {
                 Departamento dep = new Departamento();
@@ -31,16 +28,10 @@ namespace TP2_ADO.NET
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Erro na inserção");
             }
-
-            watch.Stop();
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void deleteDepartamento(String sigla)
-        {
-            var watch = new System.Diagnostics.Stopwatch();
-            watch.Start();
-
+        { 
             try
             {
                 Departamento dep = new Departamento();
@@ -56,15 +47,10 @@ namespace TP2_ADO.NET
                 Console.WriteLine("Departamento nao pode ser removido ou nao existe");
 
             }
-
-            watch.Stop();
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void updateDepartamento(String sigla, String new_descricao)
         {
-            var watch = new System.Diagnostics.Stopwatch();
-            watch.Start();
             try
             {
                 Departamento dep = new Departamento();
@@ -80,8 +66,6 @@ namespace TP2_ADO.NET
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Departamento nao pode ser atualizado ou nao existe");
             }
-            watch.Stop();
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void insertSeccao(String sigla, String siglaDepartamento, String descricao)
@@ -221,10 +205,6 @@ namespace TP2_ADO.NET
 
         public override void insert_UC_Curso(String siglaCurso, String siglaUC, int ano, int nrSemestre)
         {
-
-            var watch = new System.Diagnostics.Stopwatch();
-            watch.Start();
-
             try
             {
                 UC_Semestre uc_sem = new UC_Semestre();
@@ -242,9 +222,6 @@ namespace TP2_ADO.NET
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Erro de inserção");
             }
-
-            watch.Stop();
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         public override void remove_UC_Curso(String siglaCurso, String siglaUC, int ano, int nrSemestre)
@@ -329,11 +306,6 @@ namespace TP2_ADO.NET
 
         public override void listMatriculas(int anoLetivo)
         {
-
-            var watch = new System.Diagnostics.Stopwatch();
-
-            watch.Start();
-
             try
             {
                 var total = new Dictionary<string, int>();
@@ -363,9 +335,6 @@ namespace TP2_ADO.NET
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Erro de inserção");
             }
-            watch.Stop();
-
-            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
 

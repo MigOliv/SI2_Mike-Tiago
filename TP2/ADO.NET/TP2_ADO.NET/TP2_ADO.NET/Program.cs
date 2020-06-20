@@ -14,7 +14,7 @@ namespace TP2_ADO.NET
 {
     class Program
     {
-        private static bool ADOnEF = false;
+        private static bool ADOnEF = true;
         private static Methods methods;
         private static bool isExit = false;
         private static string database = "TP1";
@@ -29,9 +29,6 @@ namespace TP2_ADO.NET
    
         static void Main(string[] args)
         {
-            if (ADOnEF) methods = new ADOMethods();
-            else methods = new EFMethods();
-
             while (!isExit)
             {
                 int i = 0;
@@ -51,7 +48,13 @@ namespace TP2_ADO.NET
                     input = Console.ReadLine();
                 }
 
+                if (ADOnEF) methods = new ADOMethods();
+                else methods = new EFMethods();
+
+
                 RouteCommand(n);
+
+               
             }
 
               //TESTES
@@ -182,8 +185,8 @@ namespace TP2_ADO.NET
 
         private static void RouteCommand(int n)
         {
-           /* try
-            {
+           try
+            {/*
                 IDisposable context;
                 if (ADOnEF)
                 {
@@ -217,12 +220,12 @@ namespace TP2_ADO.NET
                         case "Sair": isExit = true; break;
 
                     }
+            }
             //}
-            //}
-            /*catch (Exception e)
+            catch (Exception e)
             {
                 ErrorHandler(e);
-            }*/
+            }
 
             Console.WriteLine("\n");
         }
@@ -237,7 +240,14 @@ namespace TP2_ADO.NET
         private static void listMatriculas()
         {
             int ano = (int)GetNumber(1, "Insira o ano Letivo: ");
+
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             methods.listMatriculas(ano);
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         private static void insert_nota()
@@ -274,6 +284,7 @@ namespace TP2_ADO.NET
             string siglaCurso = Console.ReadLine();
 
             methods.insert_Aluno_Curso(nrAluno, siglaCurso, ano);
+
         }
 
         private static void remove_UC_Curso()
@@ -299,7 +310,13 @@ namespace TP2_ADO.NET
             int ano = (int)GetNumber(1, "Insira o ano: ");
             int nrSemestre = (int)GetNumber(1, "Insira o numero do Semestre: ");
 
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             methods.insert_UC_Curso(siglaCurso, siglaUC, ano, nrSemestre);
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         private static void estruturaCurso()
@@ -389,7 +406,13 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a nova descricao: ");
             string descricao = Console.ReadLine();
 
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             methods.updateDepartamento(siglaDepartamento, descricao);
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         private static void deleteDepartamento()
@@ -397,7 +420,13 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a sigla do Departamento: ");
             string siglaDepartamento = Console.ReadLine();
 
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             methods.deleteDepartamento(siglaDepartamento);
+
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
 
@@ -408,8 +437,16 @@ namespace TP2_ADO.NET
             Console.WriteLine("Insira a descricao: ");
             string descricao = Console.ReadLine();
 
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
             methods.insertDepartamento(siglaDepartamento, descricao);
+            
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
+
+
 
         public static double GetNumber(double min, string request)
         {
