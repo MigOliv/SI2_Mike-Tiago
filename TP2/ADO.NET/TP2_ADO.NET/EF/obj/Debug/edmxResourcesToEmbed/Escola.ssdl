@@ -156,6 +156,7 @@ warning 6002: The table/view 'TP1.dbo.Semestre' does not have a primary key defi
     <Property Name="sigla" Type="char" MaxLength="6" Nullable="false" />
     <Property Name="descricao" Type="varchar" MaxLength="255" />
     <Property Name="numCreditos" Type="numeric" Precision="3" Scale="1" />
+    <Property Name="Versio" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'TP1.dbo.CreditosCurso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -168,7 +169,7 @@ warning 6002: The table/view 'TP1.dbo.CreditosCurso' does not have a primary key
     <Property Name="siglaUC" Type="char" MaxLength="6" Nullable="false" />
     <Property Name="numCreditos" Type="numeric" Precision="3" Scale="1" />
   </EntityType>
-  <Association Name="FK__Conclusao__sigla__1200572F">
+  <Association Name="FK__Conclusao__sigla__587DC110">
     <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
     <End Role="ConclusaoCurso" Type="Self.ConclusaoCurso" Multiplicity="*" />
     <ReferentialConstraint>
@@ -181,9 +182,9 @@ warning 6002: The table/view 'TP1.dbo.CreditosCurso' does not have a primary key
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__ConclusaoCurso__12F47B68' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__ConclusaoCurso__12F47B68" />-->
-  <Association Name="FK__Coordenad__ccPro__7193879D">
+warning 6035: The relationship 'FK__ConclusaoCurso__5971E549' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__ConclusaoCurso__5971E549" />-->
+  <Association Name="FK__Coordenad__ccPro__3810F17E">
     <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
     <End Role="CoordenadorSeccao" Type="Self.CoordenadorSeccao" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -195,7 +196,7 @@ warning 6035: The relationship 'FK__ConclusaoCurso__12F47B68' has columns that a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CoordenadorSecca__7287ABD6">
+  <Association Name="FK__CoordenadorSecca__390515B7">
     <End Role="Seccao" Type="Self.Seccao" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -211,7 +212,7 @@ warning 6035: The relationship 'FK__ConclusaoCurso__12F47B68' has columns that a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Curso__siglaDepa__6BDAAE47">
+  <Association Name="FK__Curso__siglaDepa__32581828">
     <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -226,9 +227,9 @@ warning 6035: The relationship 'FK__ConclusaoCurso__12F47B68' has columns that a
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Inscricao__18AD54BE" />-->
-  <Association Name="FK__Inscricao__19A178F7">
+warning 6035: The relationship 'FK__Inscricao__5F2ABE9F' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Inscricao__5F2ABE9F" />-->
+  <Association Name="FK__Inscricao__601EE2D8">
     <End Role="SemestreLetivo" Type="Self.SemestreLetivo" Multiplicity="1" />
     <End Role="Inscricao" Type="Self.Inscricao" Multiplicity="*" />
     <ReferentialConstraint>
@@ -242,7 +243,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Inscricao__sigla__15D0E813">
+  <Association Name="FK__Inscricao__sigla__5C4E51F4">
     <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
     <End Role="Inscricao" Type="Self.Inscricao" Multiplicity="*" />
     <ReferentialConstraint>
@@ -254,7 +255,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Inscricao__sigla__16C50C4C">
+  <Association Name="FK__Inscricao__sigla__5D42762D">
     <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1" />
     <End Role="Inscricao" Type="Self.Inscricao" Multiplicity="*" />
     <ReferentialConstraint>
@@ -266,7 +267,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Matricula__ano__0F23EA84">
+  <Association Name="FK__Matricula__ano__55A15465">
     <End Role="Ano" Type="Self.Ano" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -280,7 +281,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Matricula__numAl__0D3BA212">
+  <Association Name="FK__Matricula__numAl__53B90BF3">
     <End Role="Aluno" Type="Self.Aluno" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -294,7 +295,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Matricula__sigla__0E2FC64B">
+  <Association Name="FK__Matricula__sigla__54AD302C">
     <End Role="Curso" Type="Self.Curso" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -308,7 +309,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Professor__6EB71AF2">
+  <Association Name="FK__Professor__353484D3">
     <End Role="Seccao" Type="Self.Seccao" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -324,7 +325,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Professor__ccPro__00D5CB2D">
+  <Association Name="FK__Professor__ccPro__4753350E">
     <End Role="Professor" Type="Self.Professor" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -338,7 +339,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Professor__sigla__01C9EF66">
+  <Association Name="FK__Professor__sigla__48475947">
     <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -352,7 +353,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Professor_U__ano__02BE139F">
+  <Association Name="FK__Professor_U__ano__493B7D80">
     <End Role="Ano" Type="Self.Ano" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -366,7 +367,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RegenteUC__ano__0782C8BC">
+  <Association Name="FK__RegenteUC__ano__4E00329D">
     <End Role="Ano" Type="Self.Ano" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -380,7 +381,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RegenteUC__ccPro__059A804A">
+  <Association Name="FK__RegenteUC__ccPro__4C17EA2B">
     <End Role="Professor" Type="Self.Professor" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -394,7 +395,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RegenteUC__sigla__068EA483">
+  <Association Name="FK__RegenteUC__sigla__4D0C0E64">
     <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -408,7 +409,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Seccao__siglaDep__68FE419C">
+  <Association Name="FK__Seccao__siglaDep__2F7BAB7D">
     <End Role="Departamento" Type="Self.Departamento" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -422,7 +423,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Semestre__siglaC__7840852C">
+  <Association Name="FK__Semestre__siglaC__3EBDEF0D">
     <End Role="Curso" Type="Self.Curso" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -436,7 +437,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SemestreLet__ano__0A5F3567">
+  <Association Name="FK__SemestreLet__ano__50DC9F48">
     <End Role="Ano" Type="Self.Ano" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -450,7 +451,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UC_Semest__sigla__7C111610">
+  <Association Name="FK__UC_Semest__sigla__428E7FF1">
     <End Role="Curso" Type="Self.Curso" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -464,7 +465,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UC_Semest__sigla__7D053A49">
+  <Association Name="FK__UC_Semest__sigla__4382A42A">
     <End Role="UnidadeCurricular" Type="Self.UnidadeCurricular" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -478,7 +479,7 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UC_Semestre__ano__7DF95E82">
+  <Association Name="FK__UC_Semestre__ano__4476C863">
     <End Role="Ano" Type="Self.Ano" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -611,95 +612,95 @@ warning 6035: The relationship 'FK__Inscricao__18AD54BE' has columns that are no
     [CreditosCurso].[numCreditos] AS [numCreditos]
     FROM [dbo].[CreditosCurso] AS [CreditosCurso]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__Conclusao__sigla__1200572F" Association="Self.FK__Conclusao__sigla__1200572F">
+    <AssociationSet Name="FK__Conclusao__sigla__587DC110" Association="Self.FK__Conclusao__sigla__587DC110">
       <End Role="Curso" EntitySet="Curso" />
       <End Role="ConclusaoCurso" EntitySet="ConclusaoCurso" />
     </AssociationSet>
-    <AssociationSet Name="FK__Coordenad__ccPro__7193879D" Association="Self.FK__Coordenad__ccPro__7193879D">
+    <AssociationSet Name="FK__Coordenad__ccPro__3810F17E" Association="Self.FK__Coordenad__ccPro__3810F17E">
       <End Role="Professor" EntitySet="Professor" />
       <End Role="CoordenadorSeccao" EntitySet="CoordenadorSeccao" />
     </AssociationSet>
-    <AssociationSet Name="FK__CoordenadorSecca__7287ABD6" Association="Self.FK__CoordenadorSecca__7287ABD6">
+    <AssociationSet Name="FK__CoordenadorSecca__390515B7" Association="Self.FK__CoordenadorSecca__390515B7">
       <End Role="Seccao" EntitySet="Seccao" />
       <End Role="CoordenadorSeccao" EntitySet="CoordenadorSeccao" />
     </AssociationSet>
-    <AssociationSet Name="FK__Curso__siglaDepa__6BDAAE47" Association="Self.FK__Curso__siglaDepa__6BDAAE47">
+    <AssociationSet Name="FK__Curso__siglaDepa__32581828" Association="Self.FK__Curso__siglaDepa__32581828">
       <End Role="Departamento" EntitySet="Departamento" />
       <End Role="Curso" EntitySet="Curso" />
     </AssociationSet>
-    <AssociationSet Name="FK__Inscricao__19A178F7" Association="Self.FK__Inscricao__19A178F7">
+    <AssociationSet Name="FK__Inscricao__601EE2D8" Association="Self.FK__Inscricao__601EE2D8">
       <End Role="SemestreLetivo" EntitySet="SemestreLetivo" />
       <End Role="Inscricao" EntitySet="Inscricao" />
     </AssociationSet>
-    <AssociationSet Name="FK__Inscricao__sigla__15D0E813" Association="Self.FK__Inscricao__sigla__15D0E813">
+    <AssociationSet Name="FK__Inscricao__sigla__5C4E51F4" Association="Self.FK__Inscricao__sigla__5C4E51F4">
       <End Role="Curso" EntitySet="Curso" />
       <End Role="Inscricao" EntitySet="Inscricao" />
     </AssociationSet>
-    <AssociationSet Name="FK__Inscricao__sigla__16C50C4C" Association="Self.FK__Inscricao__sigla__16C50C4C">
+    <AssociationSet Name="FK__Inscricao__sigla__5D42762D" Association="Self.FK__Inscricao__sigla__5D42762D">
       <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
       <End Role="Inscricao" EntitySet="Inscricao" />
     </AssociationSet>
-    <AssociationSet Name="FK__Matricula__ano__0F23EA84" Association="Self.FK__Matricula__ano__0F23EA84">
+    <AssociationSet Name="FK__Matricula__ano__55A15465" Association="Self.FK__Matricula__ano__55A15465">
       <End Role="Ano" EntitySet="Ano" />
       <End Role="Matricula" EntitySet="Matricula" />
     </AssociationSet>
-    <AssociationSet Name="FK__Matricula__numAl__0D3BA212" Association="Self.FK__Matricula__numAl__0D3BA212">
+    <AssociationSet Name="FK__Matricula__numAl__53B90BF3" Association="Self.FK__Matricula__numAl__53B90BF3">
       <End Role="Aluno" EntitySet="Aluno" />
       <End Role="Matricula" EntitySet="Matricula" />
     </AssociationSet>
-    <AssociationSet Name="FK__Matricula__sigla__0E2FC64B" Association="Self.FK__Matricula__sigla__0E2FC64B">
+    <AssociationSet Name="FK__Matricula__sigla__54AD302C" Association="Self.FK__Matricula__sigla__54AD302C">
       <End Role="Curso" EntitySet="Curso" />
       <End Role="Matricula" EntitySet="Matricula" />
     </AssociationSet>
-    <AssociationSet Name="FK__Professor__6EB71AF2" Association="Self.FK__Professor__6EB71AF2">
+    <AssociationSet Name="FK__Professor__353484D3" Association="Self.FK__Professor__353484D3">
       <End Role="Seccao" EntitySet="Seccao" />
       <End Role="Professor" EntitySet="Professor" />
     </AssociationSet>
-    <AssociationSet Name="FK__Professor__ccPro__00D5CB2D" Association="Self.FK__Professor__ccPro__00D5CB2D">
+    <AssociationSet Name="FK__Professor__ccPro__4753350E" Association="Self.FK__Professor__ccPro__4753350E">
       <End Role="Professor" EntitySet="Professor" />
       <End Role="Professor_UC" EntitySet="Professor_UC" />
     </AssociationSet>
-    <AssociationSet Name="FK__Professor__sigla__01C9EF66" Association="Self.FK__Professor__sigla__01C9EF66">
+    <AssociationSet Name="FK__Professor__sigla__48475947" Association="Self.FK__Professor__sigla__48475947">
       <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
       <End Role="Professor_UC" EntitySet="Professor_UC" />
     </AssociationSet>
-    <AssociationSet Name="FK__Professor_U__ano__02BE139F" Association="Self.FK__Professor_U__ano__02BE139F">
+    <AssociationSet Name="FK__Professor_U__ano__493B7D80" Association="Self.FK__Professor_U__ano__493B7D80">
       <End Role="Ano" EntitySet="Ano" />
       <End Role="Professor_UC" EntitySet="Professor_UC" />
     </AssociationSet>
-    <AssociationSet Name="FK__RegenteUC__ano__0782C8BC" Association="Self.FK__RegenteUC__ano__0782C8BC">
+    <AssociationSet Name="FK__RegenteUC__ano__4E00329D" Association="Self.FK__RegenteUC__ano__4E00329D">
       <End Role="Ano" EntitySet="Ano" />
       <End Role="RegenteUC" EntitySet="RegenteUC" />
     </AssociationSet>
-    <AssociationSet Name="FK__RegenteUC__ccPro__059A804A" Association="Self.FK__RegenteUC__ccPro__059A804A">
+    <AssociationSet Name="FK__RegenteUC__ccPro__4C17EA2B" Association="Self.FK__RegenteUC__ccPro__4C17EA2B">
       <End Role="Professor" EntitySet="Professor" />
       <End Role="RegenteUC" EntitySet="RegenteUC" />
     </AssociationSet>
-    <AssociationSet Name="FK__RegenteUC__sigla__068EA483" Association="Self.FK__RegenteUC__sigla__068EA483">
+    <AssociationSet Name="FK__RegenteUC__sigla__4D0C0E64" Association="Self.FK__RegenteUC__sigla__4D0C0E64">
       <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
       <End Role="RegenteUC" EntitySet="RegenteUC" />
     </AssociationSet>
-    <AssociationSet Name="FK__Seccao__siglaDep__68FE419C" Association="Self.FK__Seccao__siglaDep__68FE419C">
+    <AssociationSet Name="FK__Seccao__siglaDep__2F7BAB7D" Association="Self.FK__Seccao__siglaDep__2F7BAB7D">
       <End Role="Departamento" EntitySet="Departamento" />
       <End Role="Seccao" EntitySet="Seccao" />
     </AssociationSet>
-    <AssociationSet Name="FK__Semestre__siglaC__7840852C" Association="Self.FK__Semestre__siglaC__7840852C">
+    <AssociationSet Name="FK__Semestre__siglaC__3EBDEF0D" Association="Self.FK__Semestre__siglaC__3EBDEF0D">
       <End Role="Curso" EntitySet="Curso" />
       <End Role="Semestre" EntitySet="Semestre" />
     </AssociationSet>
-    <AssociationSet Name="FK__SemestreLet__ano__0A5F3567" Association="Self.FK__SemestreLet__ano__0A5F3567">
+    <AssociationSet Name="FK__SemestreLet__ano__50DC9F48" Association="Self.FK__SemestreLet__ano__50DC9F48">
       <End Role="Ano" EntitySet="Ano" />
       <End Role="SemestreLetivo" EntitySet="SemestreLetivo" />
     </AssociationSet>
-    <AssociationSet Name="FK__UC_Semest__sigla__7C111610" Association="Self.FK__UC_Semest__sigla__7C111610">
+    <AssociationSet Name="FK__UC_Semest__sigla__428E7FF1" Association="Self.FK__UC_Semest__sigla__428E7FF1">
       <End Role="Curso" EntitySet="Curso" />
       <End Role="UC_Semestre" EntitySet="UC_Semestre" />
     </AssociationSet>
-    <AssociationSet Name="FK__UC_Semest__sigla__7D053A49" Association="Self.FK__UC_Semest__sigla__7D053A49">
+    <AssociationSet Name="FK__UC_Semest__sigla__4382A42A" Association="Self.FK__UC_Semest__sigla__4382A42A">
       <End Role="UnidadeCurricular" EntitySet="UnidadeCurricular" />
       <End Role="UC_Semestre" EntitySet="UC_Semestre" />
     </AssociationSet>
-    <AssociationSet Name="FK__UC_Semestre__ano__7DF95E82" Association="Self.FK__UC_Semestre__ano__7DF95E82">
+    <AssociationSet Name="FK__UC_Semestre__ano__4476C863" Association="Self.FK__UC_Semestre__ano__4476C863">
       <End Role="Ano" EntitySet="Ano" />
       <End Role="UC_Semestre" EntitySet="UC_Semestre" />
     </AssociationSet>

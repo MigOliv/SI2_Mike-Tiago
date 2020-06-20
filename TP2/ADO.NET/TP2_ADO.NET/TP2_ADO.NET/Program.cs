@@ -24,7 +24,7 @@ namespace TP2_ADO.NET
         {"Inserir um Departamento","Eliminar um Departamento","Atualizar um Departamento","Inserir uma Seccção","Eliminar uma Secção",
             "Atualizar uma Secção","Inserir uma UC","Eliminar uma UC","Atualizar uma UC","Criar uma estrutura de um curso",
             "Inserir uma UC num Semestre","Remover uma UC num Semestre","Matricular um Aluno num Curso","Inscrever um Aluno numa UC num Ano","Atribuir nota",
-            "Listar o Total de Matriculas","Eliminar um Aluno","Sair"      
+            "Listar o Total de Matriculas","Eliminar um Aluno", "Trocar o numero de Creditos entre duas UCs","Sair"      
         };
 
    
@@ -218,6 +218,7 @@ namespace TP2_ADO.NET
                         case "Atribuir nota": insert_nota(); break;
                         case "Listar o Total de Matriculas": listMatriculas(); break;
                         case "Eliminar um Aluno": deleteAluno(); break;
+                        case "Trocar o numero de Creditos entre duas UCs": updateNumCreditos(); break;
                         case "Sair": isExit = true; break;
 
                     }
@@ -229,6 +230,15 @@ namespace TP2_ADO.NET
             }
 
             Console.WriteLine("\n");
+        }
+
+        private static void updateNumCreditos()
+        {
+            Console.WriteLine("Insira a sigla da primeira UC: ");
+            string siglaUC1 = Console.ReadLine();
+            Console.WriteLine("Insira a sigla da segunda UC: ");
+            string siglaUC2 = Console.ReadLine();
+            EFMethods.updateNumCreditos(siglaUC1, siglaUC2);
         }
 
         private static void deleteAluno()

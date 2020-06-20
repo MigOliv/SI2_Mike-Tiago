@@ -26,6 +26,7 @@ namespace EF
         public string sigla { get; set; }
         public string descricao { get; set; }
         public Nullable<decimal> numCreditos { get; set; }
+        public byte[] Versio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscricao> Inscricaos { get; set; }

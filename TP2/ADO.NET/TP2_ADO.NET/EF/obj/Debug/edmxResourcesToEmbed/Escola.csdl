@@ -176,6 +176,7 @@
     <NavigationProperty Name="Professor_UC" Relationship="Self.FK__Professor__sigla__01C9EF66" FromRole="UnidadeCurricular" ToRole="Professor_UC" />
     <NavigationProperty Name="RegenteUCs" Relationship="Self.FK__RegenteUC__sigla__068EA483" FromRole="UnidadeCurricular" ToRole="RegenteUC" />
     <NavigationProperty Name="UC_Semestre" Relationship="Self.FK__UC_Semest__sigla__7D053A49" FromRole="UnidadeCurricular" ToRole="UC_Semestre" />
+    <Property Name="Versio" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
   </EntityType>
   <EntityType Name="Matricula">
     <Key>

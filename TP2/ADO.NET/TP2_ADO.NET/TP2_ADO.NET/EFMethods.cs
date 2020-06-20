@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -186,6 +187,31 @@ namespace TP2_ADO.NET
             {
                 context.update_UC(sigla, new_descricao, new_NrCreditos);
                 context.SaveChanges();
+            }
+        }
+
+        internal static void updateNumCreditos(string siglaUC1, string siglaUC2)
+        {
+            UnidadeCurricular uc1 = null;
+            UnidadeCurricular uc2 = null;
+            using (var context = new TP1Entities())
+            {
+                try
+                {
+                    uc1 = context.UnidadeCurriculars.Where(s => s.sigla == siglaUC1).FirstOrDefault<UnidadeCurricular>();
+                    uc2 = context.UnidadeCurriculars.Where(s => s.sigla == siglaUC2).FirstOrDefault<UnidadeCurricular>();
+                    
+                    context.update_UC(siglaUC1, uc1.descricao, uc2.numCreditos);
+                    context.update_UC(siglaUC2, uc2.descricao, uc1.numCreditos);
+                    context.SaveChanges();
+
+                    Console.WriteLine("Numero de Creditos Atualizado!");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    Console.WriteLine("Concurrency Exception Ocurred.");
+                }
+                
             }
         }
     }

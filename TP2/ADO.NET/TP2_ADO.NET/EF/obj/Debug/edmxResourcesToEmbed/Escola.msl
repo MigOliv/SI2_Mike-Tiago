@@ -132,6 +132,7 @@
     <EntitySetMapping Name="UnidadeCurriculars">
       <EntityTypeMapping TypeName="TP1Model.UnidadeCurricular">
         <MappingFragment StoreEntitySet="UnidadeCurricular">
+          <ScalarProperty Name="Versio" ColumnName="Versio" />
           <ScalarProperty Name="sigla" ColumnName="sigla" />
           <ScalarProperty Name="descricao" ColumnName="descricao" />
           <ScalarProperty Name="numCreditos" ColumnName="numCreditos" />
