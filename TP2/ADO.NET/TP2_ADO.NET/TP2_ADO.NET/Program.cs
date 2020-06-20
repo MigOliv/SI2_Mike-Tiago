@@ -233,15 +233,13 @@ namespace TP2_ADO.NET
 
         private static void updateNumCreditos()
         {
-            TP1Entities context1 = new TP1Entities();
-
             Console.WriteLine("Insira a sigla da primeira UC: ");
             string siglaUC1 = Console.ReadLine();
             Console.WriteLine("Insira a sigla da segunda UC: ");
             string siglaUC2 = Console.ReadLine();
             //methods = new EFMethods();
            
-            EFMethods.updateNumCreditos(context1,siglaUC1, siglaUC2);
+            EFMethods.updateNumCreditos(siglaUC1, siglaUC2);
         }
 
         private static void deleteAluno()
