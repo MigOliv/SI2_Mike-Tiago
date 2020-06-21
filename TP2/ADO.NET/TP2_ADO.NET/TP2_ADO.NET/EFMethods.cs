@@ -44,14 +44,6 @@ namespace TP2_ADO.NET
             }
         }
 
-        public static void deleteUC(TP1Entities context,string sigla)         //Alinea f
-        {
-           
-                context.remove_UC(sigla);
-                context.SaveChanges();
-            
-        }
-
 
         public override void estruturaCurso(string sigla, string siglaDepartamento, string descricao)   //Alinea g
         {
@@ -167,7 +159,7 @@ namespace TP2_ADO.NET
         {
             using (var context = new TP1Entities())
             {
-                context.remove_UC_Curso(siglaCurso, siglaUC, ano);      // TESTAR e verificar porquê o parametro nrSemestre?
+                context.remove_UC_Curso(siglaCurso, siglaUC, ano);      
                 context.SaveChanges();
             }
         }

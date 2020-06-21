@@ -53,135 +53,8 @@ namespace TP2_ADO.NET
                 else methods = new EFMethods();
 
 
-                RouteCommand(n);
-
-               
+                RouteCommand(n);  
             }
-
-              //TESTES
-            /*
-            using (var context = new TP1Entities())
-            {
-                var query = context.Alunoes.Where(s => s.num == 39156).FirstOrDefault<EF.Aluno>();
-
-                Console.WriteLine(query.nome);
-            }
-            */
-
-            /*
-            ListMatriculas lm = new ListMatriculas();
-            Entidades.Ano anoCurrente = new Entidades.Ano();
-            anoCurrente.AnoLetivo = 1920;
-            lm.listMatriculas(anoCurrente);
-            */
-            /*
-            //ALINEA K
-            Inscricao inscr2 = new Inscricao();
-            inscr2.numAluno = 39156;
-            inscr2.siglaUC = "SI2";
-            inscr2.nota = 20.0;
-            inscr2.ano = 1920;
-
-            IMapperInscricao map = new MapperInscricao();
-            map.Update(inscr2);
-            */
-
-
-            /*
-            // ALINEA J
-            Inscricao inscr = new Inscricao();
-            inscr.numAluno = 40623;
-            inscr.siglaUC = "AVE";
-            inscr.ano = 1920;
-
-            IMapperInscricao map = new MapperInscricao();
-            map.Create(inscr);
-            */
-
-
-            // ALINEA I
-            /*
-            Matricula matr = new Matricula();
-            matr.numAluno = 39156;
-            matr.siglaCurso = "LEC";
-            matr.ano = 1819;
-
-            IMapperMatricula map = new MapperMatricula();
-            map.Create(matr);
-            */
-
-
-            /*// ALINEA H
-            UC_Semestre uc_sem = new UC_Semestre();
-            uc_sem.numSemestre = 3;
-            uc_sem.siglaCurso = "LEIC";
-            uc_sem.siglaUC = "PC";
-            uc_sem.ano = 1920;
-
-            IMapperUC_Semestre map = new MapperUC_Semestre();
-
-            //map.Create(uc_sem);
-            map.Delete(uc_sem);
-            */
-
-            /*
-            //ALINEA G
-            Curso curs = new Curso();
-            curs.SiglaDepartamento = "ADEETC";
-            curs.Sigla = "SIP";
-            curs.Descricao = "Seguranca de Informação Partilhada";
-
-
-            IMapperCurso map = new MapperCurso();
-            map.Create(curs);
-            */
-
-
-            /*// ALINEA E
-            Seccao seccao = new Seccao();
-            seccao.Sigla = "TEST";
-            seccao.SiglaDepartamento = "ADEC";
-            seccao.Descricao = "Teste .net";
-
-            Seccao test = new Seccao();
-            test.Sigla = "TEST";
-            test.SiglaDepartamento = "ADEC";
-            test.Descricao = "Nova Descr";
-
-            IMapperSeccao map = new MapperSeccao();
-
-            //map.Create(seccao);
-            //map.Delete(test);
-            //map.Update(test);
-            */
-
-
-            /*  ALINEA F
-            UnidadeCurricular uc = new UnidadeCurricular();
-            uc.Sigla = "TEST";
-            uc.Descricao = "Teste do ADO.NET";
-            uc.NumCreditos = 10;
-
-            UnidadeCurricular test = new UnidadeCurricular();
-            test.Sigla = "TEST";
-            test.Descricao = "Uma nova descricao";
-            test.NumCreditos = 10;
-
-            IMapperUnidadeCurricular map = new MapperUnidadeCurricular();
-
-            //map.Create(uc);
-            //map.Delete(uc);
-            //map.Update(test);
-            */
-
-
-            /* // ALINEA 1.c
-
-            IMapperAluno map = new MapperAluno();
-            Aluno a = map.Read(39156);
-            map.Delete(a);
-            */
-
         }
 
         private static void RouteCommand(int n)
@@ -222,12 +95,10 @@ namespace TP2_ADO.NET
 
                     }
             }
-            
             catch (Exception e)
             {
                 ErrorHandler(e);
             }
-
             Console.WriteLine("\n");
         }
 
@@ -237,8 +108,7 @@ namespace TP2_ADO.NET
             string siglaUC1 = Console.ReadLine();
             Console.WriteLine("Insira a sigla da segunda UC: ");
             string siglaUC2 = Console.ReadLine();
-            //methods = new EFMethods();
-           
+            
             EFMethods.updateNumCreditos(siglaUC1, siglaUC2);
         }
 
@@ -357,14 +227,9 @@ namespace TP2_ADO.NET
 
         private static void deleteUC()
         {
-
-            TP1Entities context1 = new TP1Entities();
-
             Console.WriteLine("Insira a sigla da UC: ");
             string siglaUC = Console.ReadLine();
-            //methods.deleteUC(siglaUC);
-
-            EFMethods.deleteUC(context1, siglaUC);
+            methods.deleteUC(siglaUC);
         }
 
         private static void insertUC()

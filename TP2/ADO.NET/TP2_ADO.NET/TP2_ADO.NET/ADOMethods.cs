@@ -233,12 +233,5 @@ namespace TP2_ADO.NET
             Aluno a = map.Read(nrAluno);
             map.Delete(a); 
         }
-
-        /*
-        public override void updateNumCreditos(DbContext context,string sigla1, string sigla2)
-        {
-            throw new NotImplementedException();
-        }
-        */
     }
 }
