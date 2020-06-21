@@ -228,7 +228,8 @@ namespace TP2_ADO.NET
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Console.WriteLine("Concurrency Exception Ocurred.");
+                    Console.WriteLine("\n Concurrency Exception Ocurred.");
+                    Console.WriteLine(ex.Message);
                 }
                 
             }

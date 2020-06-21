@@ -60,40 +60,31 @@ namespace TP2_ADO.NET
         private static void RouteCommand(int n)
         {
            try
-            {/*
-                IDisposable context;
-                if (ADOnEF)
+            {
+                Console.Clear();
+                switch (commands[n - 1])
                 {
-                    string conString = ConfigurationManager.ConnectionStrings[database].ConnectionString;
-                    context = new Context(conString);
-                }
-                else context = new Entities();
-                */
-               
-                    Console.Clear();
-                    switch (commands[n - 1])
-                    {
-                        case "Inserir um Departamento": insertDepartamento(); break;
-                        case "Eliminar um Departamento": deleteDepartamento(); break;
-                        case "Atualizar um Departamento": updateDepartamento(); break;
-                        case "Inserir uma Seccção": insertSeccao(); break;
-                        case "Eliminar uma Secção": removeSeccao(); break;
-                        case "Atualizar uma Secção": updateSeccao(); break;
-                        case "Inserir uma UC": insertUC(); break;
-                        case "Eliminar uma UC": deleteUC(); break;
-                        case "Atualizar uma UC": updateUC(); break;
-                        case "Criar uma estrutura de um curso": estruturaCurso(); break;
-                        case "Inserir uma UC num Semestre": insert_UC_Curso(); break;
-                        case "Remover uma UC num Semestre": remove_UC_Curso(); break;
-                        case "Matricular um Aluno num Curso": insert_Aluno_Curso(); break;
-                        case "Inscrever um Aluno numa UC num Ano": inscrever_Aluno_UC(); break;
-                        case "Atribuir nota": insert_nota(); break;
-                        case "Listar o Total de Matriculas": listMatriculas(); break;
-                        case "Eliminar um Aluno": deleteAluno(); break;
-                        case "Trocar o numero de Creditos entre duas UCs": updateNumCreditos(); break;
-                        case "Sair": isExit = true; break;
+                    case "Inserir um Departamento": insertDepartamento(); break;
+                    case "Eliminar um Departamento": deleteDepartamento(); break;
+                    case "Atualizar um Departamento": updateDepartamento(); break;
+                    case "Inserir uma Seccção": insertSeccao(); break;
+                    case "Eliminar uma Secção": removeSeccao(); break;
+                    case "Atualizar uma Secção": updateSeccao(); break;
+                    case "Inserir uma UC": insertUC(); break;
+                    case "Eliminar uma UC": deleteUC(); break;
+                    case "Atualizar uma UC": updateUC(); break;
+                    case "Criar uma estrutura de um curso": estruturaCurso(); break;
+                    case "Inserir uma UC num Semestre": insert_UC_Curso(); break;
+                    case "Remover uma UC num Semestre": remove_UC_Curso(); break;
+                    case "Matricular um Aluno num Curso": insert_Aluno_Curso(); break;
+                    case "Inscrever um Aluno numa UC num Ano": inscrever_Aluno_UC(); break;
+                    case "Atribuir nota": insert_nota(); break;
+                    case "Listar o Total de Matriculas": listMatriculas(); break;
+                    case "Eliminar um Aluno": deleteAluno(); break;
+                    case "Trocar o numero de Creditos entre duas UCs": updateNumCreditos(); break;
+                    case "Sair": isExit = true; break;
 
-                    }
+                }
             }
             catch (Exception e)
             {
